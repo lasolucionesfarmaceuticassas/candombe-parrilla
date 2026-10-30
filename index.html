@@ -251,7 +251,7 @@
         <div class="w-28 h-5 bg-black rounded-full flex items-center justify-between px-3 border border-zinc-800/80 shadow-inner">
           <div class="flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="text-[9px] font-bold text-zinc-400">Mesa 4</span>
+            <span class="text-[9px] font-bold text-zinc-300">👋 ¡Bienvenidos!</span>
           </div>
           <div class="w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center">
             <span class="w-1 h-1 rounded-full bg-zinc-600"></span>
@@ -404,6 +404,17 @@
                   <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i>
                 </button>
               </div>
+            </div>
+
+            <!-- Buscador Rápido de Platos -->
+            <!-- Saludo de bienvenida -->
+            <div class="flex items-center justify-between text-xs py-0.5">
+              <span class="font-bold text-white flex items-center gap-1.5">
+                <span class="text-amber-400">👋</span> ¡Bienvenidos a Candombe!
+              </span>
+              <span class="text-[10px] text-zinc-400 bg-zinc-900/90 px-2 py-0.5 rounded-full border border-zinc-800">
+                Atendiendo en: <strong class="text-brand-orange" id="welcomeTableLabel">Mesa 4</strong>
+              </span>
             </div>
 
             <!-- Buscador Rápido de Platos -->
@@ -1263,33 +1274,35 @@
 
     // DESPLAZAMIENTO SUAVE A CATEGORÍA
     function scrollToCategory(elementId) {
-      // Si estamos en otra vista, cambiar a menú primero
+      // 1. Actualizar visualmente la píldora de inmediato
+      const pills = document.querySelectorAll('.cat-pill');
+      pills.forEach(p => {
+        if (p.getAttribute('onclick') && p.getAttribute('onclick').includes(elementId)) {
+          p.className = "cat-pill active px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-brand-orange text-white shadow-glow-orange transition-all";
+          try {
+            p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } catch(e){}
+        } else {
+          p.className = "cat-pill px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-zinc-900 text-zinc-300 border border-zinc-800 hover:border-zinc-600 transition-all";
+        }
+      });
+
+      // 2. Si no estamos en menú, cambiar a vista menú
       switchView('menu');
 
+      // 3. Scroll preciso y suave a la sección
       setTimeout(() => {
         const el = document.getElementById(elementId);
         const phoneArea = document.getElementById('phoneScrollArea');
-        
         if (el && phoneArea) {
-          const offset = 140;
-          const targetTop = el.offsetTop - offset;
-          phoneArea.scrollTo({ top: targetTop, behavior: 'smooth' });
+          const elRect = el.getBoundingClientRect();
+          const areaRect = phoneArea.getBoundingClientRect();
+          const scrollDiff = elRect.top - areaRect.top - 120;
+          phoneArea.scrollBy({ top: scrollDiff, behavior: 'smooth' });
         }
-
-        const pills = document.querySelectorAll('.cat-pill');
-        pills.forEach(p => {
-          if (p.getAttribute('onclick') && p.getAttribute('onclick').includes(elementId)) {
-            p.className = "cat-pill active px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-brand-orange text-white shadow-glow-orange transition-all";
-            // Centrar píldora en barra
-            p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          } else {
-            p.className = "cat-pill px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-zinc-900 text-zinc-300 border border-zinc-800 hover:border-zinc-600 transition-all";
-          }
-        });
       }, 50);
     }
 
-    // BUSCADOR EN VIVO
     function handleSearch(val) {
       const clearBtn = document.getElementById('clearSearchBtn');
       const text = val.toLowerCase().trim();
@@ -1634,6 +1647,8 @@
       currentTable = tableName;
       const display = document.getElementById('currentTableDisplay');
       if (display) display.textContent = tableName;
+      const welcomeLabel = document.getElementById('welcomeTableLabel');
+      if (welcomeLabel) welcomeLabel.textContent = tableName;
 
       // Actualizar botones de mesa en PC si existen
       const quickBtns = document.querySelectorAll('.table-quick-btn');
