@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candombe Parrilla | El Auténtico Fuego de la Carne • Hacienda El Castillo</title>
+  <meta name="description" content="Candombe Parrilla - Cortes finos al carbón, choripán tradicional argentino, hamburguesas ahumadas y ambiente campestre en Hacienda El Castillo, Jamundí / Cali.">
+
+  <!-- Google Fonts: Bebas Neue, Montserrat, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ember: {
+              black: '#0f0e0e',
+              charcoal: '#171615',
+              card: '#201d1b',
+              border: '#332e2a',
+              fire: '#ea580c',
+              gold: '#f59e0b',
+              glow: '#fb923c',
+              smoke: '#a8a29e'
+            }
+          },
+          fontFamily: {
+            title: ['Bebas Neue', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0f0e0e;
+      color: #f5f5f4;
+      font-family: 'Inter', sans-serif;
+    }
+    .font-title { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
+    .font-display { font-family: 'Montserrat', sans-serif; }
+    
+    .ember-gradient {
+      background: radial-gradient(circle at 50% 20%, rgba(234, 88, 12, 0.15) 0%, rgba(15, 14, 14, 1) 70%);
+    }
+
+    .fire-gradient-btn {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
+    }
+
+    .clean-dish-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .clean-dish-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px -10px rgba(234, 88, 12, 0.25);
+      border-color: rgba(245, 158, 11, 0.5);
+    }
+
+    /* Glow de fuego */
+    .fire-glow-text {
+      text-shadow: 0 0 20px rgba(234, 88, 12, 0.4);
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-600 selection:text-white">
+
+  <!-- AVISO DE PROPUESTA (Para la reunión de presentación) -->
+  <div class="bg-gradient-to-r from-orange-950 via-amber-900 to-orange-950 border-b border-orange-700/30 text-xs py-2 px-4 text-center text-amber-200">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <span class="flex items-center gap-2">
+        <i class="fa-solid fa-fire-burner text-amber-400"></i>
+        <strong>DEMO PROPUESTA DIGITAL PARA CANDOMBE PARRILLA</strong> — Diseñado especialmente para la reunión con el equipo de Candombe.
+      </span>
+      <span class="text-amber-300 font-semibold flex items-center gap-1.5 text-[11px]">
+        <i class="fa-brands fa-instagram text-sm"></i> @_candombe_
+      </span>
+    </div>
+  </div>
+
+  <!-- HEADER NAVEGACIÓN -->
+  <header class="sticky top-0 z-40 bg-ember-black/90 backdrop-blur-md border-b border-ember-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- LOGO BRANDING -->
+        <a href="#inicio" class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-600 to-orange-700 flex items-center justify-center shadow-lg shadow-orange-900/40">
+            <i class="fa-solid fa-fire text-2xl text-white"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-title text-3xl tracking-widest text-white leading-none">
+              CANDOMBE
+            </span>
+            <span class="text-[9.5px] uppercase tracking-[0.3em] text-ember-gold font-bold">
+              Parrilla &amp; Cortes al Carbón
+            </span>
+          </div>
+        </a>
+
+        <!-- LINKS DE NAVEGACIÓN -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#inicio" class="text-xs uppercase tracking-wider text-stone-300 hover:text-ember-gold font-semibold transition-colors">Inicio</a>
+          <a href="#menu" class="text-xs uppercase tracking-wider text-stone-300 hover:text-ember-gold font-semibold transition-colors flex items-center gap-1.5">
+            <span>Carta &amp; Menú</span>
+            <span class="px-2 py-0.5 text-[10px] bg-orange-500/20 text-orange-400 rounded-full font-bold">En Línea</span>
+          </a>
+          <a href="#experiencia" class="text-xs uppercase tracking-wider text-stone-300 hover:text-ember-gold font-semibold transition-colors">Experiencia</a>
+          <a href="#reservas" class="text-xs uppercase tracking-wider text-stone-300 hover:text-ember-gold font-semibold transition-colors">Reservas</a>
+          <a href="#ubicacion" class="text-xs uppercase tracking-wider text-stone-300 hover:text-ember-gold font-semibold transition-colors">Ubicación</a>
+        </nav>
+
+        <!-- ACCIONES RÁPIDAS -->
+        <div class="flex items-center gap-3">
+          <!-- Carrito Flotante de Pedidos -->
+          <button onclick="toggleOrderDrawer()" class="relative p-2.5 rounded-xl bg-ember-card border border-ember-border text-amber-400 hover:text-white hover:border-amber-500 transition-all" title="Ver mi pedido">
+            <i class="fa-solid fa-utensils text-base"></i>
+            <span id="orderBadge" class="absolute -top-1.5 -right-1.5 bg-orange-600 text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow-md scale-0 transition-transform">
+              0
+            </span>
+          </button>
+
+          <!-- WhatsApp Directo -->
+          <a href="https://wa.me/573151020757?text=Hola%20Candombe%20Parrilla,%20deseo%20hacer%20un%20pedido%20o%20reserva." target="_blank" class="hidden sm:inline-flex items-center gap-2 fire-gradient-btn text-white px-5 py-2.5 rounded-full font-display font-bold text-xs tracking-wider uppercase shadow-lg shadow-orange-900/30 hover:scale-102 transition-all">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Pedir Domicilio</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="inicio" class="relative min-h-[640px] lg:min-h-[720px] flex items-center ember-gradient border-b border-ember-border overflow-hidden">
+    <!-- Fondo fotográfico con velo oscuro -->
+    <div class="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity scale-105 transition-transform duration-1000" style="background-image: url('./assets/img_8.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ember-black via-ember-black/85 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Texto Principal -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-950/60 border border-orange-500/40 text-orange-400 text-xs font-semibold tracking-widest uppercase">
+            <i class="fa-solid fa-fire text-amber-400"></i>
+            <span>Tradición Parrillera • Hacienda El Castillo</span>
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-title tracking-wide text-white leading-tight fire-glow-text">
+            EL AUTÉNTICO FUEGO <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-300">
+              DE LA CARNE AL CARBÓN
+            </span>
+          </h1>
+
+          <p class="text-stone-300 text-base sm:text-lg max-w-xl leading-relaxed mx-auto lg:mx-0 font-normal">
+            Cortes madurados a la brasa de leña, el clásico <strong class="text-white">choripán argentino</strong> con chimichurri de la casa, hamburguesas ahumadas y un ambiente campestre incomparable para compartir en familia.
+          </p>
+
+          <!-- Badges de Atributos -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2 text-xs text-stone-300">
+            <span class="flex items-center gap-1.5 bg-ember-card px-3.5 py-1.5 rounded-lg border border-ember-border">
+              <i class="fa-solid fa-fire-flame-curved text-amber-500"></i> 100% Brasa de Carbón
+            </span>
+            <span class="flex items-center gap-1.5 bg-ember-card px-3.5 py-1.5 rounded-lg border border-ember-border">
+              <i class="fa-solid fa-drumstick-bite text-orange-400"></i> Cortes Angus &amp; Baby Beef
+            </span>
+            <span class="flex items-center gap-1.5 bg-ember-card px-3.5 py-1.5 rounded-lg border border-ember-border">
+              <i class="fa-solid fa-motorcycle text-amber-400"></i> Domicilios en Zona Jamundí / Cali
+            </span>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#menu" class="w-full sm:w-auto text-center px-8 py-4 rounded-full fire-gradient-btn text-white font-display font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-900/40 hover:scale-102 transition-all">
+              Explorar Menú &amp; Pedir
+            </a>
+            <a href="#reservas" class="w-full sm:w-auto text-center px-8 py-4 rounded-full bg-ember-card border border-stone-700 text-white font-display font-bold text-xs uppercase tracking-wider hover:border-amber-500 transition-all">
+              <i class="fa-solid fa-calendar-check text-amber-400 mr-2"></i> Reservar Mesa
+            </a>
+          </div>
+        </div>
+
+        <!-- Plato Estrella Flotante (Showcase) -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-md">
+            
+            <div class="bg-ember-card/90 backdrop-blur-md rounded-3xl p-6 border border-ember-border shadow-2xl relative z-10">
+              <div class="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden mb-4 group">
+                <img src="./assets/img_10.jpg" alt="Bife de Chorizo Candombe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <span class="absolute top-3 right-3 bg-orange-600 text-white font-title text-sm px-3 py-1 rounded-full uppercase tracking-wider">
+                  Recomendado del Asador
+                </span>
+                <div class="absolute bottom-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs text-amber-300 font-bold border border-white/10">
+                  <i class="fa-solid fa-star mr-1"></i> Bife de Chorizo 400g
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs uppercase font-mono text-ember-gold font-bold tracking-wider">CORTE INSIGNIA</span>
+                  <span class="font-title text-2xl text-white font-bold">$46.000 COP</span>
+                </div>
+                <h3 class="text-lg font-display font-bold text-white">
+                  Bife de Chorizo a la Brasa
+                </h3>
+                <p class="text-xs text-stone-400 line-clamp-2">
+                  Jugoso corte madurado asado a fuego lento al carbón de leña, sellado con sal marina, acompañado de papas a la francesa y chimichurri casero.
+                </p>
+                <div class="pt-3 border-t border-ember-border">
+                  <button onclick="addToOrder(1, 'Bife de Chorizo a la Brasa (400g)', 46000)" class="w-full py-2.5 rounded-xl fire-gradient-btn text-white text-xs font-display font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                    <span>Agregar a mi Pedido</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resplandor de fuego trasero -->
+            <div class="absolute -inset-2 bg-gradient-to-r from-orange-600/30 via-amber-500/20 to-red-600/30 rounded-3xl blur-2xl -z-10"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MENÚ DIGITAL INTERACTIVO ==================== -->
+  <section id="menu" class="py-20 bg-ember-black border-b border-ember-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Encabezado del Menú -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-[0.3em] text-ember-gold font-bold font-display">
+            CARTA Y ESPECIALIDADES
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-title tracking-wider text-white">
+            NUESTRO MENÚ A LA BRASA
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-400">
+            Haz clic en "+ Agregar" para armar tu pedido y enviarlo directamente a nuestro WhatsApp.
+          </p>
+        </div>
+
+        <!-- Buscador de Platos -->
+        <div class="w-full md:w-72 relative">
+          <input type="text" id="dishSearch" oninput="filterDishes()" placeholder="Buscar corte, plato o entrada..." class="w-full bg-ember-card border border-ember-border text-white text-xs rounded-full pl-10 pr-4 py-3 focus:outline-none focus:border-amber-500 transition-all">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-stone-400 text-xs"></i>
+        </div>
+      </div>
+
+      <!-- Pestañas de Categoría -->
+      <div class="flex flex-wrap items-center gap-2 pb-6 border-b border-ember-border mb-10" id="categoryTabs">
+        <button onclick="setCategory('TODOS')" class="menu-tab active px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-orange-600 text-white shadow-md">
+          Todos los Platos
+        </button>
+        <button onclick="setCategory('CORTES')" class="menu-tab px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-ember-card text-stone-300 hover:text-white border border-ember-border">
+          Cortes &amp; Carnes al Carbón
+        </button>
+        <button onclick="setCategory('ENTRADAS')" class="menu-tab px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-ember-card text-stone-300 hover:text-white border border-ember-border">
+          Entradas &amp; Choripán
+        </button>
+        <button onclick="setCategory('BURGERS')" class="menu-tab px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-ember-card text-stone-300 hover:text-white border border-ember-border">
+          Hamburguesas Artesanales
+        </button>
+        <button onclick="setCategory('BEBIDAS')" class="menu-tab px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-ember-card text-stone-300 hover:text-white border border-ember-border">
+          Bebidas &amp; Cervezas
+        </button>
+      </div>
+
+      <!-- Cuadrícula de Platos -->
+      <div id="dishesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Generado dinámicamente -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN: LA EXPERIENCIA CANDOMBE ==================== -->
+  <section id="experiencia" class="py-20 bg-ember-charcoal border-b border-ember-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs uppercase tracking-[0.3em] text-ember-gold font-bold font-display">
+            PASIÓN POR EL ASADO
+          </span>
+          <h2 class="text-4xl sm:text-5xl font-title tracking-wider text-white leading-tight">
+            MÁS QUE UN RESTAURANTE, <br>
+            <span class="text-amber-500">UN RITUAL ALREDEDOR DEL FUEGO</span>
+          </h2>
+          <p class="text-stone-300 text-sm leading-relaxed">
+            En <strong>Candombe</strong> honramos la tradición del asado de campo: el crepitar de la leña, el aroma inconfundible de la carne asada a su punto perfecto y la alegría de compartir una buena mesa con amigos y familia en el sector de Hacienda El Castillo.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-4 pt-2">
+            <div class="bg-ember-card p-4 rounded-2xl border border-ember-border">
+              <i class="fa-solid fa-tree text-2xl text-amber-500 mb-2"></i>
+              <h4 class="font-display font-bold text-white text-sm">Zona Campestre</h4>
+              <p class="text-xs text-stone-400 mt-1">Ambiente fresco y familiar, pet friendly con parqueadero seguro.</p>
+            </div>
+            <div class="bg-ember-card p-4 rounded-2xl border border-ember-border">
+              <i class="fa-solid fa-wine-glass text-2xl text-orange-500 mb-2"></i>
+              <h4 class="font-display font-bold text-white text-sm">Cervezas &amp; Cócteles</h4>
+              <p class="text-xs text-stone-400 mt-1">El maridaje ideal para cada corte de carne y entrada.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+          <img src="./assets/img_5.jpg" alt="Parrilla Candombe" class="rounded-2xl object-cover h-64 w-full shadow-lg">
+          <img src="./assets/img_11.jpg" alt="Cortes al Carbón" class="rounded-2xl object-cover h-64 w-full shadow-lg mt-8">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECCIÓN DE RESERVAS ==================== -->
+  <section id="reservas" class="py-20 bg-ember-black border-b border-ember-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-ember-card p-8 sm:p-12 rounded-3xl border border-amber-500/30 shadow-2xl text-center space-y-6 relative overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-950/70 border border-orange-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
+          <i class="fa-solid fa-calendar-star"></i>
+          <span>Asegura Tu Espacio</span>
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl font-title tracking-wider text-white">
+          RESERVA TU MESA PARA ESTE FIN DE SEMANA
+        </h2>
+        <p class="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+          ¿Planeas un cumpleaños, reunión familiar o salida de fin de semana? Reserva con anticipación y nosotros preparamos la mejor mesa para ti.
+        </p>
+
+        <!-- Formulario Rápido de Reserva a WhatsApp -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left max-w-2xl mx-auto pt-2">
+          <div>
+            <label class="text-[11px] font-bold text-stone-300 block mb-1">Tu Nombre:</label>
+            <input type="text" id="resName" placeholder="Ej: Carlos Mejía" class="w-full bg-ember-charcoal border border-ember-border rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-stone-300 block mb-1">Fecha &amp; Hora:</label>
+            <input type="text" id="resDate" placeholder="Ej: Sábado 2:00 PM" class="w-full bg-ember-charcoal border border-ember-border rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-stone-300 block mb-1">Nº de Personas:</label>
+            <select id="resPax" class="w-full bg-ember-charcoal border border-ember-border rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-500">
+              <option value="2 Personas">2 Personas (Pareja)</option>
+              <option value="4 Personas" selected>4 Personas</option>
+              <option value="6 a 8 Personas">6 a 8 Personas</option>
+              <option value="10+ Personas (Grupo)">10+ Personas (Grupo)</option>
+            </select>
+          </div>
+        </div>
+
+        <button onclick="sendReservationWhatsApp()" class="fire-gradient-btn text-white px-10 py-3.5 rounded-full font-display font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-900/40 hover:scale-102 transition-all">
+          <i class="fa-brands fa-whatsapp text-sm mr-2"></i> Confirmar Reserva por WhatsApp
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== UBICACIÓN & HORARIOS ==================== -->
+  <section id="ubicacion" class="py-16 bg-ember-charcoal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+        
+        <div class="space-y-2">
+          <div class="w-12 h-12 rounded-xl bg-orange-950/60 border border-orange-500/30 flex items-center justify-center text-amber-400 text-xl mx-auto md:mx-0">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <h4 class="font-title text-2xl text-white tracking-wide">UBICACIÓN</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Hacienda El Castillo, sector La Herrería.<br>
+            Jamundí • Valle del Cauca, Colombia<br>
+            <span class="text-amber-400 font-semibold">(A pocos minutos del sur de Cali)</span>
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="w-12 h-12 rounded-xl bg-orange-950/60 border border-orange-500/30 flex items-center justify-center text-amber-400 text-xl mx-auto md:mx-0">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <h4 class="font-title text-2xl text-white tracking-wide">HORARIOS DE ATENCIÓN</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            <strong>Jueves a Domingo y Festivos:</strong><br>
+            12:00 PM – 9:00 PM<br>
+            <em>Atención de eventos privados bajo reserva previa.</em>
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="w-12 h-12 rounded-xl bg-orange-950/60 border border-orange-500/30 flex items-center justify-center text-amber-400 text-xl mx-auto md:mx-0">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <h4 class="font-title text-2xl text-white tracking-wide">CONTACTO &amp; PEDIDOS</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            <strong>Línea de Pedidos WhatsApp:</strong><br>
+            +57 315 102 0757<br>
+            <a href="https://www.instagram.com/_candombe_/" target="_blank" class="text-amber-400 hover:underline">
+              Instagram: @_candombe_
+            </a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DRAWER DEL PEDIDO (CARRITO FLOTANTE) ==================== -->
+  <div id="orderDrawer" class="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-ember-card border-l border-ember-border shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-5 border-b border-ember-border flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-fire text-amber-500"></i>
+        <h3 class="font-title text-2xl text-white tracking-wide">MI PEDIDO CANDOMBE</h3>
+      </div>
+      <button onclick="toggleOrderDrawer()" class="p-2 text-stone-400 hover:text-white">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-4 space-y-3" id="orderItemsList">
+      <!-- Generado dinámicamente -->
+    </div>
+
+    <div class="p-5 border-t border-ember-border bg-ember-charcoal space-y-3">
+      <div class="flex items-center justify-between text-sm text-stone-300">
+        <span>Total Estimado:</span>
+        <strong id="orderTotalPrice" class="font-title text-2xl text-amber-400">$0 COP</strong>
+      </div>
+      <button onclick="sendOrderWhatsApp()" id="sendOrderBtn" disabled class="w-full py-3.5 rounded-full fire-gradient-btn text-white font-display font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 opacity-50 cursor-not-allowed transition-all">
+        <i class="fa-brands fa-whatsapp text-sm"></i>
+        <span>Enviar Pedido a WhatsApp</span>
+      </button>
+      <button onclick="clearOrder()" class="w-full text-center text-[11px] text-stone-500 hover:text-red-400 transition-colors">
+        Vaciar pedido
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/573151020757?text=Hola%20Candombe%20Parrilla,%20deseo%20hacer%20un%20pedido%20o%20reserva." target="_blank" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-all" title="Pedir por WhatsApp">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- ==================== LÓGICA JAVASCRIPT ==================== -->
+  <script>
+    // Platos reales del menú de Candombe Parrilla
+    const dishes = [
+      {
+        id: 1,
+        cat: 'CORTES',
+        nombre: 'Bife de Chorizo (400g)',
+        desc: 'Corte madurado y jugoso a la brasa con sal marina, papas a la francesa y chimichurri.',
+        precio: 46000,
+        img: './assets/img_9.jpg',
+        badge: 'Corte Estrella'
+      },
+      {
+        id: 2,
+        cat: 'CORTES',
+        nombre: 'Baby Beef al Carbón (350g)',
+        desc: 'Corte magro y ultra suave sellado a fuego vivo, acompañado de ensalada fresca y papas.',
+        precio: 42000,
+        img: './assets/img_11.jpg',
+        badge: 'Recomendado'
+      },
+      {
+        id: 3,
+        cat: 'CORTES',
+        nombre: 'Costillas BBQ Ahumadas (500g)',
+        desc: 'Costillitas tiernas glaseadas con salsa barbacoa artesanal de la casa.',
+        precio: 39000,
+        img: './assets/img_5.jpg',
+        badge: 'Favorito'
+      },
+      {
+        id: 4,
+        cat: 'ENTRADAS',
+        nombre: 'Choripán Argentino Tradicional',
+        desc: 'Chorizo parrillero argentino en pan crocante, lechuga, tomate fresco, chimichurri y papas.',
+        precio: 21500,
+        img: './assets/img_3.jpg',
+        badge: 'Típico'
+      },
+      {
+        id: 5,
+        cat: 'ENTRADAS',
+        nombre: 'Empanaditas Típicas (x10)',
+        desc: 'Diez empanadas crocantes recién fritas acompañadas de guacamole casero y ají.',
+        precio: 16000,
+        img: './assets/img_2.jpg',
+        badge: 'Para Compartir'
+      },
+      {
+        id: 6,
+        cat: 'ENTRADAS',
+        nombre: 'Tostadas de Plátano con Carne Desmechada',
+        desc: 'Patacones crocantes con abundante carne sazonada al estilo criollo y guacamole.',
+        precio: 25000,
+        img: './assets/img_6.jpg',
+        badge: 'Delicioso'
+      },
+      {
+        id: 7,
+        cat: 'BURGERS',
+        nombre: 'Hamburguesa Candombe Parrillera',
+        desc: '200g de carne 100% de res asada a la brasa, queso cheddar fundido, tocineta ahumada y papas.',
+        precio: 28000,
+        img: './assets/img_1.jpg',
+        badge: 'Burger Top'
+      },
+      {
+        id: 8,
+        cat: 'BURGERS',
+        nombre: 'Hamburguesa Campestre BBQ',
+        desc: 'Carne al carbón, aros de cebolla crocantes, salsa BBQ ahumada, queso y papas.',
+        precio: 26000,
+        img: './assets/img_7.jpg',
+        badge: 'Nueva'
+      },
+      {
+        id: 9,
+        cat: 'BEBIDAS',
+        nombre: 'Cerveza Club Colombia Dorada / Roja',
+        desc: 'Bien fría para acompañar tu corte de carne favorito.',
+        precio: 8000,
+        img: './assets/img_4.jpg',
+        badge: 'Bebida'
+      },
+      {
+        id: 10,
+        cat: 'BEBIDAS',
+        nombre: 'Limonada de Coco Candombe',
+        desc: 'Refrescante limonada frappé cremosa con coco natural.',
+        precio: 12000,
+        img: './assets/img_12.jpg',
+        badge: 'Favorita'
+      }
+    ];
+
+    let currentCat = 'TODOS';
+    let currentSearch = '';
+    let cart = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDishes();
+    });
+
+    function setCategory(cat) {
+      currentCat = cat;
+      const tabs = document.querySelectorAll('.menu-tab');
+      tabs.forEach(t => {
+        if ((cat === 'TODOS' && t.textContent.includes('Todos')) || 
+            (cat !== 'TODOS' && t.textContent.toUpperCase().includes(cat))) {
+          t.className = "menu-tab active px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-orange-600 text-white shadow-md";
+        } else {
+          t.className = "menu-tab px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-ember-card text-stone-300 hover:text-white border border-ember-border";
+        }
+      });
+      renderDishes();
+    }
+
+    function filterDishes() {
+      currentSearch = document.getElementById('dishSearch').value.toLowerCase().trim();
+      renderDishes();
+    }
+
+    function renderDishes() {
+      const grid = document.getElementById('dishesGrid');
+      const filtered = dishes.filter(d => {
+        if (currentCat !== 'TODOS' && d.cat !== currentCat) return false;
+        if (currentSearch && !d.nombre.toLowerCase().includes(currentSearch) && !d.desc.toLowerCase().includes(currentSearch)) return false;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-12 text-stone-500">
+            <i class="fa-solid fa-utensils text-3xl mb-2"></i>
+            <p>No encontramos platos con esa búsqueda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(d => `
+        <div class="clean-dish-card bg-ember-card rounded-2xl border border-ember-border overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="h-48 w-full relative overflow-hidden group">
+              <img src="${d.img}" alt="${d.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-2.5 left-2.5 bg-black/70 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-bold text-amber-400 border border-white/10 uppercase">
+                ${d.badge}
+              </span>
+            </div>
+
+            <div class="p-5 space-y-2">
+              <div class="flex items-center justify-between">
+                <h4 class="font-display font-bold text-base text-white">${d.nombre}</h4>
+              </div>
+              <p class="text-xs text-stone-400 line-clamp-2 leading-relaxed">${d.desc}</p>
+            </div>
+          </div>
+
+          <div class="p-5 pt-0 flex items-center justify-between border-t border-ember-border/60 mt-3 pt-3">
+            <span class="font-title text-2xl text-amber-400 font-bold">$${d.precio.toLocaleString('es-CO')}</span>
+            <button onclick="addToOrder(${d.id}, '${d.nombre}', ${d.precio})" class="px-4 py-2 rounded-xl fire-gradient-btn text-white text-xs font-display font-bold uppercase tracking-wider flex items-center gap-1.5 hover:brightness-110 transition-all">
+              <i class="fa-solid fa-plus text-xs"></i>
+              <span>Agregar</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Lógica del Carrito / Pedido
+    function addToOrder(id, nombre, precio) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ id, nombre, precio, qty: 1 });
+      }
+      updateCartUI();
+      openOrderDrawer();
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCartUI();
+    }
+
+    function clearOrder() {
+      cart = [];
+      updateCartUI();
+    }
+
+    function toggleOrderDrawer() {
+      document.getElementById('orderDrawer').classList.toggle('translate-x-full');
+    }
+
+    function openOrderDrawer() {
+      document.getElementById('orderDrawer').classList.remove('translate-x-full');
+    }
+
+    function updateCartUI() {
+      const badge = document.getElementById('orderBadge');
+      const list = document.getElementById('orderItemsList');
+      const totalEl = document.getElementById('orderTotalPrice');
+      const sendBtn = document.getElementById('sendOrderBtn');
+
+      const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
+      const totalPrice = cart.reduce((acc, curr) => acc + (curr.precio * curr.qty), 0);
+
+      totalEl.textContent = `$${totalPrice.toLocaleString('es-CO')} COP`;
+
+      if (totalItems > 0) {
+        badge.textContent = totalItems;
+        badge.classList.remove('scale-0');
+        badge.classList.add('scale-100');
+        sendBtn.disabled = false;
+        sendBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      } else {
+        badge.classList.remove('scale-100');
+        badge.classList.add('scale-0');
+        sendBtn.disabled = true;
+        sendBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+
+      if (cart.length === 0) {
+        list.innerHTML = `
+          <div class="text-center py-12 text-stone-500 text-xs space-y-2">
+            <i class="fa-solid fa-utensils text-3xl opacity-30"></i>
+            <p>Aún no has agregado platos a tu pedido.</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = cart.map(item => `
+        <div class="bg-ember-charcoal p-3 rounded-xl border border-ember-border flex items-center justify-between gap-2 text-xs">
+          <div class="flex-1 truncate">
+            <h5 class="text-white font-bold truncate">${item.nombre}</h5>
+            <p class="text-amber-400 font-mono font-semibold">$${(item.precio * item.qty).toLocaleString('es-CO')}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-ember-card text-stone-300 hover:text-white flex items-center justify-center font-bold">
+              -
+            </button>
+            <span class="w-5 text-center text-white font-mono font-bold">${item.qty}</span>
+            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-ember-card text-stone-300 hover:text-white flex items-center justify-center font-bold">
+              +
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function sendOrderWhatsApp() {
+      if (cart.length === 0) return;
+      let msg = "¡Hola Candombe Parrilla! Deseo realizar el siguiente pedido para entrega/domicilio:\n\n";
+      let total = 0;
+      cart.forEach((item, index) => {
+        const sub = item.precio * item.qty;
+        total += sub;
+        msg += `${index + 1}. ${item.nombre} (x${item.qty}) -> $${sub.toLocaleString('es-CO')}\n`;
+      });
+      msg += `\n*TOTAL DEL PEDIDO: $${total.toLocaleString('es-CO')} COP*\n\n¿Me confirman disponibilidad y tiempo de entrega? ¡Muchas gracias!`;
+      window.open(`https://wa.me/573151020757?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function sendReservationWhatsApp() {
+      const name = document.getElementById('resName').value.trim() || 'Cliente';
+      const date = document.getElementById('resDate').value.trim() || 'Este fin de semana';
+      const pax = document.getElementById('resPax').value;
+
+      const msg = `¡Hola Candombe Parrilla! Deseo solicitar una reserva de mesa:\n\n- Nombre: ${name}\n- Fecha y Hora estimada: ${date}\n- Número de personas: ${pax}\n\n¿Tienen disponibilidad en la zona campestre? Quedo atento a su confirmación. ¡Muchas gracias!`;
+      window.open(`https://wa.me/573151020757?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  </script>
+</body>
+</html>

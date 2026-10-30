@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-[#08080a] text-slate-100 antialiased selection:bg-orange-500 selection:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Candombe Parrilla • Menú Digital & Experiencia Inteligente</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts: Bebas Neue, Plus Jakarta Sans, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Bebas Neue"', 'sans-serif'],
+            brand: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              orange: '#FF5722',
+              ember: '#E65100',
+              gold: '#FFB300',
+              dark: '#0c0d12',
+              card: '#14151d',
+              border: '#242634'
+            }
+          },
+          boxShadow: {
+            'glow-orange': '0 0 25px -4px rgba(255, 87, 34, 0.45)',
+            'glow-amber': '0 0 20px -3px rgba(255, 179, 0, 0.35)',
+            'glow-cyan': '0 0 20px -3px rgba(6, 182, 212, 0.35)',
+            'phone': '0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 50px rgba(255, 87, 34, 0.2)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Ocultar barra de scroll pero mantener funcionalidad fluida */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Cristal esmerilado de lujo */
+    .glass-bar {
+      background: rgba(12, 13, 18, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .glass-card {
+      background: rgba(20, 21, 29, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Animaciones dinámicas */
+    .fade-enter {
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .slide-up {
+      animation: slideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .pulse-subtle {
+      animation: pulseSubtle 2.5s infinite;
+    }
+    @keyframes pulseSubtle {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.03); opacity: 0.9; }
+    }
+
+    /* Anillo de historia pulsante estilo Menüpp/Instagram */
+    .story-ring {
+      background: linear-gradient(45deg, #FF5722, #FFB300, #E91E63);
+      padding: 2.5px;
+      border-radius: 9999px;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .story-ring:hover {
+      transform: scale(1.08);
+    }
+    .story-ring:active {
+      transform: scale(0.95);
+    }
+
+    /* Cursors de arrastre */
+    .cursor-grab { cursor: grab; }
+    .cursor-grabbing { cursor: grabbing !important; user-select: none; }
+
+    /* Efectos hover en tarjetas de comida */
+    .food-card {
+      transition: all 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .food-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 87, 34, 0.55);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(255, 87, 34, 0.3);
+    }
+    .food-card:active {
+      transform: scale(0.98);
+    }
+
+    /* Reflejo de cristal en el marco del teléfono */
+    .phone-glass-glare {
+      background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 40%);
+    }
+  </style>
+</head>
+<body class="min-h-full bg-[#08080a] text-slate-100 font-sans flex items-center justify-center p-0 lg:p-6 overflow-x-hidden">
+
+  <!-- ==================== FONDO AMBIENTAL DE ALTO IMPACTO ==================== -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
+    <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-orange-600/20 rounded-full blur-[160px]"></div>
+    <div class="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-amber-500/15 rounded-full blur-[160px]"></div>
+    <img src="./assets/img_10.jpg" alt="Brasas Candombe" class="w-full h-full object-cover filter blur-[28px] scale-110">
+  </div>
+
+  <!-- TOAST NOTIFICACIÓN FLOTANTE -->
+  <div id="toastNotification" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 -translate-y-4">
+    <div class="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-xs px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-2.5 border border-emerald-400/40">
+      <i class="fa-solid fa-circle-check text-base"></i>
+      <span id="toastMessage">¡Plato agregado a tu orden!</span>
+    </div>
+  </div>
+
+  <!-- ==================== CONTENEDOR SHOWROOM (DESKTOP + MOBILE) ==================== -->
+  <div class="w-full max-w-7xl mx-auto flex items-center justify-center gap-8 relative z-10 py-0 lg:py-4">
+
+    <!-- ========================================================================= -->
+    <!-- PANEL IZQUIERDO DESKTOP: CONTROL DE MESA & SIMULADOR EN VIVO (>=1024px)    -->
+    <!-- ========================================================================= -->
+    <aside class="hidden xl:flex flex-col w-72 shrink-0 space-y-4 text-xs select-none">
+      
+      <!-- Tarjeta 1: Estado del Sistema -->
+      <div class="glass-card rounded-3xl p-5 border border-zinc-800 shadow-xl space-y-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-orange to-amber-500 flex items-center justify-center text-white shadow-glow-orange">
+            <i class="fa-solid fa-fire text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm">Candombe Parrilla</h3>
+            <span class="text-[10px] text-emerald-400 flex items-center gap-1.5 font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Sistema de Mesa Activo
+            </span>
+          </div>
+        </div>
+
+        <p class="text-zinc-400 text-[11px] leading-relaxed">
+          Esta pantalla simula exactamente la experiencia del comensal al escanear el código QR en su mesa.
+        </p>
+
+        <!-- Selector de Mesa Rápido en PC -->
+        <div class="pt-2 border-t border-zinc-800/80 space-y-2">
+          <label class="font-bold text-zinc-300 text-[11px] block">Cambiar Mesa de Prueba:</label>
+          <div class="grid grid-cols-2 gap-2 font-semibold">
+            <button onclick="setTableDirect('Mesa 1')" class="table-quick-btn py-2 px-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-brand-orange hover:text-brand-orange text-left transition-all">
+              🪑 Mesa 1
+            </button>
+            <button onclick="setTableDirect('Mesa 2')" class="table-quick-btn py-2 px-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-brand-orange hover:text-brand-orange text-left transition-all">
+              🪑 Mesa 2
+            </button>
+            <button onclick="setTableDirect('Mesa 4 VIP')" class="table-quick-btn py-2 px-3 rounded-xl bg-brand-orange/20 border border-brand-orange text-brand-orange text-left transition-all font-bold">
+              ⭐ Mesa 4 VIP
+            </button>
+            <button onclick="setTableDirect('Terraza 3')" class="table-quick-btn py-2 px-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-brand-orange hover:text-brand-orange text-left transition-all">
+              🌿 Terraza 3
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Botones de Prueba Rápida de Servicio -->
+      <div class="glass-card rounded-3xl p-5 border border-zinc-800 shadow-xl space-y-3">
+        <h4 class="font-bold text-zinc-200 text-xs uppercase tracking-wider flex items-center gap-2">
+          <i class="fa-solid fa-bell-concierge text-brand-orange"></i>
+          Simulador de Servicio
+        </h4>
+
+        <div class="space-y-2.5">
+          <button onclick="triggerCallWaiter()" class="w-full py-2.5 px-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-amber-500/30 hover:border-amber-500 text-amber-300 font-bold flex items-center justify-between transition-all group">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-bell text-amber-400 group-hover:scale-110 transition-transform"></i>
+              Llamar al Mesero
+            </span>
+            <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded text-amber-300">Probar</span>
+          </button>
+
+          <button onclick="triggerAskBill()" class="w-full py-2.5 px-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-emerald-500/30 hover:border-emerald-500 text-emerald-300 font-bold flex items-center justify-between transition-all group">
+            <span class="flex items-center gap-2">
+              <i class="fa-solid fa-receipt text-emerald-400 group-hover:scale-110 transition-transform"></i>
+              Solicitar la Cuenta
+            </span>
+            <span class="text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded text-emerald-300">Probar</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: QR Code Escaneable -->
+      <div class="glass-card rounded-3xl p-4 border border-zinc-800 text-center space-y-2">
+        <span class="text-[11px] font-bold text-zinc-300 block">¡Pruébalo en tu propio celular!</span>
+        <div class="w-24 h-24 mx-auto bg-white p-2 rounded-2xl shadow-lg flex items-center justify-center">
+          <i class="fa-solid fa-qrcode text-zinc-900 text-5xl"></i>
+        </div>
+        <p class="text-[10px] text-zinc-500">Escanea durante la reunión para impresionar al dueño</p>
+      </div>
+
+    </aside>
+
+    <!-- ========================================================================= -->
+    <!-- CENTRO: MARCO SIMULADOR IPHONE 16 PRO HYPER-REALISTA                       -->
+    <!-- ========================================================================= -->
+    <div class="w-full max-w-[420px] mx-auto bg-brand-dark shadow-phone relative flex flex-col rounded-none sm:rounded-[48px] border-0 sm:border-[10px] sm:border-[#1e1f29] overflow-hidden min-h-screen sm:min-h-[860px] sm:max-h-[890px] z-20">
+
+      <!-- REFLEJO DE CRISTAL REALISTA (Solo visible en pantallas medianas/grandes) -->
+      <div class="hidden sm:block absolute inset-0 pointer-events-none z-50 phone-glass-glare rounded-[38px]"></div>
+
+      <!-- ISLA DINÁMICA / NOTCH DE IPHONE -->
+      <div class="hidden sm:flex justify-center pt-2.5 pb-1 bg-brand-dark relative z-40 select-none">
+        <div class="w-28 h-5 bg-black rounded-full flex items-center justify-between px-3 border border-zinc-800/80 shadow-inner">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[9px] font-bold text-zinc-400">Mesa 4</span>
+          </div>
+          <div class="w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center">
+            <span class="w-1 h-1 rounded-full bg-zinc-600"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== ÁREA DE SCROLL PRINCIPAL DEL CELULAR ==================== -->
+      <div class="flex-1 overflow-y-auto no-scrollbar relative flex flex-col" id="phoneScrollArea">
+
+        <!-- ========================================================================= -->
+        <!-- VISTA 1: HUB PRINCIPAL (ESTILO MENÜPP & BBC PUBS)                         -->
+        <!-- ========================================================================= -->
+        <section id="viewHub" class="fade-enter flex flex-col justify-between min-h-full relative p-5 pb-24">
+          
+          <!-- Fondo con Textura de Brasas -->
+          <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-45">
+            <img src="./assets/img_10.jpg" alt="Fondo Brasas" class="w-full h-full object-cover filter blur-[2px] scale-105">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/75 via-brand-dark/95 to-brand-dark"></div>
+          </div>
+
+          <!-- Cabecera de la Marca -->
+          <div class="relative z-10 text-center pt-5 pb-1 space-y-3">
+            <!-- Logo con Brillo Candombe -->
+            <div class="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-tr from-brand-orange via-amber-600 to-amber-500 p-1 shadow-glow-orange flex items-center justify-center">
+              <div class="w-full h-full bg-brand-dark rounded-[22px] flex items-center justify-center">
+                <i class="fa-solid fa-fire-flame-curved text-amber-500 text-3xl"></i>
+              </div>
+            </div>
+
+            <div>
+              <h1 class="font-display text-5xl tracking-widest text-white leading-none">CANDOMBE</h1>
+              <p class="text-xs uppercase tracking-[0.3em] text-brand-orange font-extrabold mt-1">Parrilla &amp; Cortes al Carbón</p>
+            </div>
+
+            <div class="inline-flex items-center gap-2 bg-zinc-900/95 border border-zinc-800 px-3.5 py-1.5 rounded-full text-[11px] text-zinc-300 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Abierto Hoy • Hacienda El Castillo</span>
+            </div>
+          </div>
+
+          <!-- BOTONERA CENTRAL MODULAR (MENÜPP STYLE) -->
+          <div class="relative z-10 space-y-3.5 my-auto py-3">
+            
+            <!-- BOTÓN 1: MENÚ DIGITAL -->
+            <button onclick="switchView('menu')" class="w-full food-card group bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-zinc-800/90 border border-brand-border p-4 rounded-2xl flex items-center justify-between shadow-xl">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/20 group-hover:bg-brand-orange text-orange-400 group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-inner">
+                  <i class="fa-solid fa-utensils text-xl"></i>
+                </div>
+                <div class="text-left">
+                  <span class="font-display text-2xl tracking-wider text-white block leading-none group-hover:text-brand-orange transition-colors">MENÚ DIGITAL</span>
+                  <span class="text-[11px] text-zinc-400">Cortes madurados, entradas y bebidas</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-chevron-right text-zinc-500 group-hover:text-white text-sm transition-transform group-hover:translate-x-1.5"></i>
+            </button>
+
+            <!-- BOTÓN 2: RESERVAS -->
+            <button onclick="switchView('reservas')" class="w-full food-card group bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-zinc-800/90 border border-brand-border p-4 rounded-2xl flex items-center justify-between shadow-xl">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/20 group-hover:bg-amber-500 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-all duration-300 shadow-inner">
+                  <i class="fa-solid fa-calendar-check text-xl"></i>
+                </div>
+                <div class="text-left">
+                  <span class="font-display text-2xl tracking-wider text-white block leading-none group-hover:text-amber-400 transition-colors">RESERVAS</span>
+                  <span class="text-[11px] text-zinc-400">Aparta tu mesa para el fin de semana</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-chevron-right text-zinc-500 group-hover:text-white text-sm transition-transform group-hover:translate-x-1.5"></i>
+            </button>
+
+            <!-- BOTÓN 3: DANOS TU OPINIÓN -->
+            <button onclick="switchView('opinion')" class="w-full food-card group bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-zinc-800/90 border border-brand-border p-4 rounded-2xl flex items-center justify-between shadow-xl">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-amber-400/20 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-all duration-300 shadow-inner">
+                  <i class="fa-solid fa-star text-xl"></i>
+                </div>
+                <div class="text-left">
+                  <span class="font-display text-2xl tracking-wider text-white block leading-none group-hover:text-amber-400 transition-colors">DANOS TU OPINIÓN</span>
+                  <span class="text-[11px] text-zinc-400">Califica tu experiencia y ayúdanos a mejorar</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-chevron-right text-zinc-500 group-hover:text-white text-sm transition-transform group-hover:translate-x-1.5"></i>
+            </button>
+
+            <!-- BOTÓN 4: NUESTRA SEDE -->
+            <button onclick="switchView('sede')" class="w-full food-card group bg-gradient-to-r from-zinc-900 via-zinc-900/95 to-zinc-800/90 border border-brand-border p-4 rounded-2xl flex items-center justify-between shadow-xl">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 group-hover:bg-emerald-500 text-emerald-400 group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-inner">
+                  <i class="fa-solid fa-location-dot text-xl"></i>
+                </div>
+                <div class="text-left">
+                  <span class="font-display text-2xl tracking-wider text-white block leading-none group-hover:text-emerald-400 transition-colors">NUESTRA SEDE</span>
+                  <span class="text-[11px] text-zinc-400">Cómo llegar a Hacienda El Castillo</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-chevron-right text-zinc-500 group-hover:text-white text-sm transition-transform group-hover:translate-x-1.5"></i>
+            </button>
+
+          </div>
+
+          <!-- Redes Sociales y WhatsApp Directo -->
+          <div class="relative z-10 pt-2 text-center space-y-2.5">
+            <p class="text-[11px] text-zinc-400 font-medium">Síguenos y contáctanos directamente:</p>
+            
+            <div class="flex items-center justify-center gap-3">
+              <a href="https://www.instagram.com/_candombe_/" target="_blank" class="w-11 h-11 rounded-2xl bg-zinc-900 border border-zinc-800 text-pink-500 hover:bg-zinc-800 flex items-center justify-center text-lg shadow-lg hover:scale-105 transition-all">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+
+              <a href="https://wa.me/573151020757?text=Hola%20Candombe%20Parrilla,%20deseo%20informaci%C3%B3n." target="_blank" class="w-11 h-11 rounded-2xl bg-emerald-600 text-white hover:bg-emerald-500 flex items-center justify-center text-lg shadow-lg shadow-emerald-950/40 hover:scale-105 transition-all">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+
+              <a href="#" class="w-11 h-11 rounded-2xl bg-zinc-900 border border-zinc-800 text-blue-500 hover:bg-zinc-800 flex items-center justify-center text-lg shadow-lg hover:scale-105 transition-all">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+            </div>
+
+            <p class="text-[10px] text-zinc-500">© 2026 Candombe Parrilla • Sistema Menüpp Smart</p>
+          </div>
+
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- VISTA 2: MENÚ DIGITAL COMPLETO (ULTRA-DINÁMICO, NADA DE PARCO)             -->
+        <!-- ========================================================================= -->
+        <section id="viewMenu" class="hidden fade-enter flex-1 pb-32">
+          
+          <!-- BARRA SUPERIOR FIJA: Volver, Mesa y Buscador -->
+          <header class="sticky top-0 z-30 glass-bar border-b border-zinc-800/90 px-4 py-2.5 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <button onclick="switchView('hub')" class="flex items-center gap-2 text-xs font-bold text-zinc-300 hover:text-white bg-zinc-900/95 px-3 py-1.5 rounded-full border border-zinc-800 transition-colors">
+                <i class="fa-solid fa-arrow-left text-brand-orange"></i>
+                <span>Inicio</span>
+              </button>
+
+              <div class="flex items-center gap-2">
+                <!-- Botón Llamar Mesero Rápido en Header -->
+                <button onclick="triggerCallWaiter()" class="flex items-center gap-1.5 bg-amber-500/15 text-amber-400 hover:bg-amber-500/25 border border-amber-500/30 px-2.5 py-1.5 rounded-full text-xs font-bold transition-all">
+                  <i class="fa-solid fa-bell text-xs animate-bounce"></i>
+                  <span class="hidden sm:inline">Mesero</span>
+                </button>
+
+                <!-- Selector de Mesa Menüpp -->
+                <button onclick="openTableSelector()" class="flex items-center gap-1.5 bg-gradient-to-r from-orange-600/25 to-amber-600/25 text-orange-400 border border-orange-500/40 px-3.5 py-1.5 rounded-full text-xs font-bold shadow-sm">
+                  <i class="fa-solid fa-chair text-amber-400"></i>
+                  <span id="currentTableDisplay">Mesa 4</span>
+                  <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Buscador Rápido de Platos -->
+            <div class="relative">
+              <input 
+                type="text" 
+                id="menuSearch" 
+                oninput="handleSearch(this.value)" 
+                placeholder="Buscar bife, choripán, sangría, burger..." 
+                class="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl pl-9 pr-8 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-brand-orange transition-colors"
+              >
+              <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-zinc-500 text-xs"></i>
+              <button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-3 top-2 text-zinc-400 hover:text-white text-xs">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </header>
+
+          <!-- ==================== 1. HISTORIAS DESTACADAS (ESTILO INSTAGRAM / MENÜPP) ==================== -->
+          <div class="pt-3 pb-2 px-3 border-b border-zinc-800/80 bg-zinc-950/60">
+            <div class="flex items-center justify-between px-1 mb-2">
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-zinc-400 flex items-center gap-1.5">
+                <i class="fa-solid fa-bolt text-brand-orange text-xs"></i>
+                Experiencias de la Casa
+              </span>
+              <span class="text-[10px] text-zinc-500">Desliza &rarr;</span>
+            </div>
+
+            <!-- Fila de Historias con Scroll de Rueda y Arrastre de Ratón -->
+            <div class="flex items-center gap-3 overflow-x-auto no-scrollbar scroll-smooth cursor-grab py-1 px-1" id="storiesBar">
+              
+              <div onclick="scrollToCategory('sec-cortes')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group">
+                <div class="story-ring">
+                  <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-dark bg-zinc-900">
+                    <img src="./assets/img_9.jpg" alt="Cortes" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-zinc-300 group-hover:text-brand-orange transition-colors">Cortes Top</span>
+              </div>
+
+              <div onclick="scrollToCategory('sec-compartir')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group">
+                <div class="story-ring">
+                  <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-dark bg-zinc-900">
+                    <img src="./assets/img_10.jpg" alt="Banquetes" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-zinc-300 group-hover:text-amber-400 transition-colors">Banquetes</span>
+              </div>
+
+              <div onclick="scrollToCategory('sec-entradas')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group">
+                <div class="story-ring">
+                  <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-dark bg-zinc-900">
+                    <img src="./assets/img_3.jpg" alt="Choripán" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-zinc-300 group-hover:text-orange-400 transition-colors">Choripán</span>
+              </div>
+
+              <div onclick="scrollToCategory('sec-burgers')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group">
+                <div class="story-ring">
+                  <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-dark bg-zinc-900">
+                    <img src="./assets/img_1.jpg" alt="Burgers" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-zinc-300 group-hover:text-amber-400 transition-colors">Burgers</span>
+              </div>
+
+              <div onclick="scrollToCategory('sec-bebidas')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer group">
+                <div class="story-ring">
+                  <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-dark bg-zinc-900">
+                    <img src="./assets/img_12.jpg" alt="Sangría" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-zinc-300 group-hover:text-emerald-400 transition-colors">Sangría 2x1</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ==================== 2. BANNER PROMOCIONAL ANIMADO (HERO CAROUSEL) ==================== -->
+          <div class="p-3">
+            <div id="promoBannerCard" class="relative rounded-2xl overflow-hidden p-4 bg-gradient-to-r from-orange-950/80 via-zinc-900 to-amber-950/80 border border-orange-500/30 shadow-lg flex items-center justify-between">
+              <div class="relative z-10 max-w-[70%] space-y-1">
+                <span class="text-[9px] font-black uppercase tracking-widest bg-brand-orange text-white px-2 py-0.5 rounded font-mono shadow-sm">
+                  RECOMENDACIÓN DEL CHEF
+                </span>
+                <h3 class="font-display text-2xl text-white tracking-wide leading-tight">
+                  BIFE DE CHORIZO MADURADO
+                </h3>
+                <p class="text-[11px] text-zinc-300 leading-snug">
+                  400g a la brasa de quebracho. Pídelo en término 3/4 con papas rústicas.
+                </p>
+              </div>
+
+              <div class="relative z-10 shrink-0">
+                <button onclick="openCustomizer(1)" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold text-xs shadow-glow-orange hover:scale-105 transition-transform flex items-center gap-1.5">
+                  <span>Pedir</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+              </div>
+
+              <!-- Imagen tenue de fondo -->
+              <img src="./assets/img_9.jpg" alt="Bife" class="absolute right-0 top-0 w-1/2 h-full object-cover opacity-25 filter blur-[1px]">
+            </div>
+          </div>
+
+          <!-- ==================== 3. BARRA DE CATEGORÍAS NAVEGABLE (DRAG + WHEEL + ARROWS) ==================== -->
+          <div class="sticky top-[95px] z-20 glass-bar border-b border-zinc-800 px-2 py-2 flex items-center gap-1">
+            
+            <!-- Flecha Izquierda con Hover Luminoso -->
+            <button onclick="scrollNavCategories('left')" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-orange text-zinc-300 hover:text-white shrink-0 flex items-center justify-center text-xs shadow-md transition-all">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Contenedor Deslizable con Soporte de Mouse Wheel y Mouse Drag -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth cursor-grab py-1 px-1 flex-1 select-none" id="categoryNavBar">
+              <button onclick="scrollToCategory('sec-cortes')" class="cat-pill active px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-brand-orange text-white shadow-glow-orange transition-all">
+                🥩 Cortes al Carbón
+              </button>
+              <button onclick="scrollToCategory('sec-compartir')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-zinc-900 text-zinc-300 border border-zinc-800 hover:border-zinc-600 transition-all">
+                👨‍👩‍👦 Para Compartir
+              </button>
+              <button onclick="scrollToCategory('sec-entradas')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-zinc-900 text-zinc-300 border border-zinc-800 hover:border-zinc-600 transition-all">
+                🥟 Entradas &amp; Choripán
+              </button>
+              <button onclick="scrollToCategory('sec-burgers')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-zinc-900 text-zinc-300 border border-zinc-800 hover:border-zinc-600 transition-all">
+                🍔 Hamburguesas
+              </button>
+              <button onclick="scrollToCategory('sec-bebidas')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-zinc-900 text-zinc-300 border border-zinc-800 hover:border-zinc-600 transition-all">
+                🍹 Bebidas &amp; Cervezas
+              </button>
+            </div>
+
+            <!-- Flecha Derecha con Hover Luminoso -->
+            <button onclick="scrollNavCategories('right')" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-orange text-zinc-300 hover:text-white shrink-0 flex items-center justify-center text-xs shadow-md transition-all">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+          </div>
+
+          <!-- ==================== 4. LISTADO CONTINUO DE PLATOS (VIBRANTE Y ATRACTIVO) ==================== -->
+          <main class="p-3.5 space-y-7" id="menuMainContent">
+
+            <!-- 1. CORTES & PLATOS FUERTES -->
+            <section id="sec-cortes" class="space-y-3 pt-1">
+              <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                <div>
+                  <h2 class="font-display text-3xl tracking-wide text-white leading-none">🥩 CORTES &amp; PLATOS FUERTES</h2>
+                  <p class="text-[11px] text-zinc-400 mt-0.5">Madurados y asados a fuego de leña. Incluyen acompañamiento.</p>
+                </div>
+                <span class="text-[10px] font-mono font-bold bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded border border-orange-500/30">3 Opciones</span>
+              </div>
+              <div class="space-y-3" id="container-cortes"></div>
+            </section>
+
+            <!-- 2. PARA COMPARTIR -->
+            <section id="sec-compartir" class="space-y-3 pt-3">
+              <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                <div>
+                  <h2 class="font-display text-3xl tracking-wide text-white leading-none">👨‍👩‍👦 BANQUETES &amp; PICADAS</h2>
+                  <p class="text-[11px] text-zinc-400 mt-0.5">Para compartir en familia o grupos grandes de fin de semana.</p>
+                </div>
+                <span class="text-[10px] font-mono font-bold bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded border border-amber-500/30">2 Opciones</span>
+              </div>
+              <div class="space-y-3" id="container-compartir"></div>
+            </section>
+
+            <!-- 3. ENTRADAS & CHORIPÁN -->
+            <section id="sec-entradas" class="space-y-3 pt-3">
+              <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                <div>
+                  <h2 class="font-display text-3xl tracking-wide text-white leading-none">🥟 ENTRADAS &amp; PARRILLA</h2>
+                  <p class="text-[11px] text-zinc-400 mt-0.5">Abre el apetito con nuestras recetas artesanales.</p>
+                </div>
+                <span class="text-[10px] font-mono font-bold bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded border border-orange-500/30">2 Opciones</span>
+              </div>
+              <div class="space-y-3" id="container-entradas"></div>
+            </section>
+
+            <!-- 4. HAMBURGUESAS -->
+            <section id="sec-burgers" class="space-y-3 pt-3">
+              <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                <div>
+                  <h2 class="font-display text-3xl tracking-wide text-white leading-none">🍔 HAMBURGUESAS ARTESANALES</h2>
+                  <p class="text-[11px] text-zinc-400 mt-0.5">200g carne de res madurada sellada a la brasa en pan brioche.</p>
+                </div>
+                <span class="text-[10px] font-mono font-bold bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded border border-orange-500/30">2 Opciones</span>
+              </div>
+              <div class="space-y-3" id="container-burgers"></div>
+            </section>
+
+            <!-- 5. BEBIDAS & COCTELERÍA -->
+            <section id="sec-bebidas" class="space-y-3 pt-3 pb-8">
+              <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                <div>
+                  <h2 class="font-display text-3xl tracking-wide text-white leading-none">🍹 BEBIDAS &amp; COCTELERÍA</h2>
+                  <p class="text-[11px] text-zinc-400 mt-0.5">Jarras de sangría, limonadas naturales y cervezas heladas.</p>
+                </div>
+                <span class="text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">3 Opciones</span>
+              </div>
+              <div class="space-y-3" id="container-bebidas"></div>
+            </section>
+
+          </main>
+
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- VISTA 3: MÓDULO DE RESERVAS INTERACTIVO                                   -->
+        <!-- ========================================================================= -->
+        <section id="viewReservas" class="hidden fade-enter p-5 pb-24">
+          <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
+            <button onclick="switchView('hub')" class="flex items-center gap-2 text-xs font-bold text-zinc-300 hover:text-white bg-zinc-900 px-3 py-1.5 rounded-full border border-zinc-800">
+              <i class="fa-solid fa-arrow-left text-brand-orange"></i>
+              <span>Volver</span>
+            </button>
+            <span class="font-display text-3xl tracking-wide text-white">RESERVAR MESA</span>
+            <div class="w-8"></div>
+          </div>
+
+          <div class="mt-4 space-y-4">
+            <div class="bg-gradient-to-br from-zinc-900 to-zinc-950 p-4 rounded-2xl border border-orange-500/30">
+              <h3 class="font-display text-2xl text-white tracking-wide">EXPERIENCIA CAMPESTRE</h3>
+              <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+                Asegura tu mesa en Hacienda El Castillo. Para fines de semana recomendamos apartar con mínimo 24 horas de antelación.
+              </p>
+            </div>
+
+            <form id="reservationForm" onsubmit="submitReservation(event)" class="space-y-3.5 text-xs">
+              <div>
+                <label class="font-bold text-zinc-300 block mb-1">Nombre Completo *</label>
+                <input type="text" id="resName" required placeholder="Ej: Carlos Gómez" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-white focus:outline-none focus:border-brand-orange">
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="font-bold text-zinc-300 block mb-1">WhatsApp *</label>
+                  <input type="tel" id="resPhone" required placeholder="315..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-white focus:outline-none focus:border-brand-orange">
+                </div>
+                <div>
+                  <label class="font-bold text-zinc-300 block mb-1">Personas *</label>
+                  <select id="resGuests" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-white focus:outline-none focus:border-brand-orange">
+                    <option value="2 Personas">2 Personas (Pareja)</option>
+                    <option value="4 Personas" selected>4 Personas (Familia)</option>
+                    <option value="6 Personas">6 Personas</option>
+                    <option value="8+ Personas">8+ Personas (Grupo)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="font-bold text-zinc-300 block mb-1">Fecha *</label>
+                  <input type="date" id="resDate" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-white focus:outline-none focus:border-brand-orange">
+                </div>
+                <div>
+                  <label class="font-bold text-zinc-300 block mb-1">Hora Estimada *</label>
+                  <select id="resTime" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-white focus:outline-none focus:border-brand-orange">
+                    <option value="12:30 PM">12:30 PM (Almuerzo)</option>
+                    <option value="1:30 PM" selected>1:30 PM (Almuerzo)</option>
+                    <option value="3:00 PM">3:00 PM (Tardeo)</option>
+                    <option value="7:00 PM">7:00 PM (Cena)</option>
+                    <option value="8:30 PM">8:30 PM (Cena)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="font-bold text-zinc-300 block mb-1">Motivo / Ocasión Especial</label>
+                <select id="resOccasion" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-white focus:outline-none focus:border-brand-orange">
+                  <option value="Almuerzo Familiar">Almuerzo Familiar de Fin de Semana</option>
+                  <option value="Cumpleaños">Celebración de Cumpleaños 🎉</option>
+                  <option value="Aniversario">Aniversario / Romántico ❤️</option>
+                  <option value="Reunión de Negocios">Reunión de Negocios 💼</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="font-bold text-zinc-300 block mb-1">Notas especiales o ubicación preferida</label>
+                <textarea id="resNotes" rows="2" placeholder="Ej: Mesa cerca a la zona verde o terraza..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-white focus:outline-none focus:border-brand-orange"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-950/40 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>Confirmar Reserva por WhatsApp</span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- VISTA 4: MÓDULO DE OPINIÓN / CALIFICACIÓN / CRM                           -->
+        <!-- ========================================================================= -->
+        <section id="viewOpinion" class="hidden fade-enter p-5 pb-24">
+          <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
+            <button onclick="switchView('hub')" class="flex items-center gap-2 text-xs font-bold text-zinc-300 hover:text-white bg-zinc-900 px-3 py-1.5 rounded-full border border-zinc-800">
+              <i class="fa-solid fa-arrow-left text-brand-orange"></i>
+              <span>Volver</span>
+            </button>
+            <span class="font-display text-3xl tracking-wide text-white">TU OPINIÓN</span>
+            <div class="w-8"></div>
+          </div>
+
+          <div class="mt-4 space-y-5 text-center">
+            <div>
+              <h3 class="font-display text-2xl text-white">¿CÓMO ESTUVO TU VISITA HOY?</h3>
+              <p class="text-xs text-zinc-400 mt-1">Tu calificación nos ayuda a mantener el mejor estándar en la parrilla.</p>
+            </div>
+
+            <!-- Selector de 5 estrellas interactivas -->
+            <div class="flex items-center justify-center gap-3 text-3xl text-zinc-600 my-4" id="starRatingContainer">
+              <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 text-amber-400 transition-colors" onclick="setRating(1)"></i>
+              <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 text-amber-400 transition-colors" onclick="setRating(2)"></i>
+              <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 text-amber-400 transition-colors" onclick="setRating(3)"></i>
+              <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 text-amber-400 transition-colors" onclick="setRating(4)"></i>
+              <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 text-amber-400 transition-colors" onclick="setRating(5)"></i>
+            </div>
+
+            <p id="ratingLabel" class="text-xs font-bold text-amber-400 uppercase tracking-widest">¡Excelente experiencia! (5 Estrellas)</p>
+
+            <div class="text-left space-y-3">
+              <label class="text-xs font-bold text-zinc-300 block">¿Qué fue lo que más te gustó o qué podemos mejorar?</label>
+              <textarea id="opinionText" rows="3" placeholder="El término de la carne estuvo perfecto, la atención del mesero..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-brand-orange"></textarea>
+            </div>
+
+            <button onclick="submitReview()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-brand-orange text-white font-bold text-xs uppercase tracking-wider shadow-glow-orange hover:scale-[1.02] transition-all">
+              Enviar Calificación
+            </button>
+
+            <!-- Box explicativo del valor comercial de Menüpp -->
+            <div class="p-3 bg-zinc-900/80 rounded-xl border border-zinc-800 text-[11px] text-zinc-400 text-left">
+              <span class="text-brand-orange font-bold">⭐ Estrategia Menüpp:</span> Si el cliente califica 5 estrellas, se le redirige a Google Maps para subir la reputación del restaurante. Si califica bajo, el mensaje llega en privado al dueño.
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- VISTA 5: NUESTRA SEDE & CÓMO LLEGAR                                       -->
+        <!-- ========================================================================= -->
+        <section id="viewSede" class="hidden fade-enter p-5 pb-24">
+          <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
+            <button onclick="switchView('hub')" class="flex items-center gap-2 text-xs font-bold text-zinc-300 hover:text-white bg-zinc-900 px-3 py-1.5 rounded-full border border-zinc-800">
+              <i class="fa-solid fa-arrow-left text-brand-orange"></i>
+              <span>Volver</span>
+            </button>
+            <span class="font-display text-3xl tracking-wide text-white">NUESTRA SEDE</span>
+            <div class="w-8"></div>
+          </div>
+
+          <div class="mt-4 space-y-4 text-xs">
+            <div class="rounded-2xl overflow-hidden border border-zinc-800 h-44 relative bg-zinc-950">
+              <img src="./assets/img_10.jpg" alt="Sede Candombe" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3">
+                <span class="font-display text-xl text-white">Hacienda El Castillo • Jamundí</span>
+              </div>
+            </div>
+
+            <div class="bg-zinc-900/90 p-4 rounded-2xl border border-zinc-800 space-y-2">
+              <div class="flex items-start gap-2.5">
+                <i class="fa-solid fa-location-dot text-brand-orange text-sm mt-0.5"></i>
+                <div>
+                  <span class="font-bold text-white block">Ubicación Campestre:</span>
+                  <p class="text-zinc-400 mt-0.5">Centro Comercial o Zona Campestre El Castillo, Jamundí (Vía Cali - Jamundí).</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 pt-2 border-t border-zinc-800">
+                <i class="fa-solid fa-clock text-amber-400 text-sm mt-0.5"></i>
+                <div>
+                  <span class="font-bold text-white block">Horarios de Atención:</span>
+                  <p class="text-zinc-400 mt-0.5">Viernes, Sábados, Domingos y Festivos: 11:30 AM a 9:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 pt-1">
+              <a href="https://maps.google.com" target="_blank" class="py-3 px-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-center font-bold text-zinc-200 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-map-location-dot text-blue-400"></i>
+                <span>Google Maps</span>
+              </a>
+
+              <a href="https://waze.com" target="_blank" class="py-3 px-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-center font-bold text-zinc-200 flex items-center justify-center gap-2">
+                <i class="fa-brands fa-waze text-cyan-400 text-base"></i>
+                <span>Abrir en Waze</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ==================== BARRA FLOTANTE DE COMANDA / CARRITO ==================== -->
+      <div id="floatingCartBar" class="hidden absolute bottom-16 left-3 right-3 z-30 slide-up">
+        <button onclick="openCartModal()" class="w-full bg-gradient-to-r from-orange-600 via-brand-orange to-amber-500 text-white p-3.5 rounded-2xl shadow-glow-orange flex items-center justify-between font-bold text-xs border border-orange-400/30">
+          <div class="flex items-center gap-2.5">
+            <span class="w-6 h-6 rounded-full bg-black/40 text-white text-[11px] flex items-center justify-center font-mono font-black" id="floatingCartCount">0</span>
+            <span id="floatingCartText">Ítems en Comanda</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-sm tracking-tight" id="floatingCartTotal">$0</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </div>
+        </button>
+      </div>
+
+      <!-- ==================== BARRA DE NAVEGACIÓN INFERIOR FIJA (ESTILO MENÜPP APP) ==================== -->
+      <nav class="absolute bottom-0 left-0 right-0 z-30 glass-bar border-t border-zinc-800/90 py-2 px-3 flex items-center justify-around text-[10px] font-bold select-none">
+        
+        <button onclick="switchView('hub')" id="navBtnHub" class="flex flex-col items-center gap-1 text-brand-orange transition-colors">
+          <i class="fa-solid fa-house text-base"></i>
+          <span>Inicio</span>
+        </button>
+
+        <button onclick="switchView('menu')" id="navBtnMenu" class="flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-colors">
+          <i class="fa-solid fa-utensils text-base"></i>
+          <span>Menú</span>
+        </button>
+
+        <button onclick="triggerCallWaiter()" class="flex flex-col items-center gap-1 text-zinc-400 hover:text-amber-400 transition-colors">
+          <i class="fa-solid fa-bell-concierge text-base"></i>
+          <span>Mesero</span>
+        </button>
+
+        <button onclick="triggerAskBill()" class="flex flex-col items-center gap-1 text-zinc-400 hover:text-emerald-400 transition-colors">
+          <i class="fa-solid fa-receipt text-base"></i>
+          <span>Cuenta</span>
+        </button>
+
+        <button onclick="openTableSelector()" class="flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-colors">
+          <i class="fa-solid fa-chair text-base"></i>
+          <span>Mesa</span>
+        </button>
+
+      </nav>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- PANEL DERECHO DESKTOP: COMPARATIVA VS MENÜPP PARA CERRAR LA VENTA (>=1024) -->
+    <!-- ========================================================================= -->
+    <aside class="hidden xl:flex flex-col w-80 shrink-0 space-y-4 text-xs select-none">
+      
+      <!-- Comparativa de Costos demoledora -->
+      <div class="glass-card rounded-3xl p-5 border border-zinc-800 shadow-xl space-y-3">
+        <div class="flex items-center justify-between pb-2 border-b border-zinc-800">
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-brand-orange">
+            TU PROPUESTA VS MENÜPP
+          </span>
+          <span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded">Ganadora</span>
+        </div>
+
+        <div class="space-y-3 pt-1">
+          <!-- Menüpp Costo -->
+          <div class="bg-red-500/10 border border-red-500/30 p-3 rounded-2xl">
+            <div class="flex items-center justify-between text-red-300 font-bold mb-1">
+              <span>Menüpp (Alquiler)</span>
+              <span class="font-mono">$250.000 / mes</span>
+            </div>
+            <p class="text-[10px] text-zinc-400">
+              $3.000.000 cada año de por vida. Si no pagas un mes, te apagan el menú y pierdes los datos de tus clientes.
+            </p>
+          </div>
+
+          <!-- Tu Solución -->
+          <div class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-2xl">
+            <div class="flex items-center justify-between text-emerald-300 font-bold mb-1">
+              <span>Tu Solución Propia</span>
+              <span class="font-mono text-emerald-400">$0 Mensual</span>
+            </div>
+            <p class="text-[10px] text-zinc-300 font-medium">
+              Software 100% propio del restaurante. Sin rentas mensuales ni comisiones sobre las ventas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ventajas Clave -->
+        <div class="space-y-2 pt-2 border-t border-zinc-800/80 text-[11px]">
+          <div class="flex items-start gap-2 text-zinc-300">
+            <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+            <span><strong>Comanda directa a WhatsApp:</strong> Llega lista a cocina con término de carne y acompañamiento.</span>
+          </div>
+
+          <div class="flex items-start gap-2 text-zinc-300">
+            <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+            <span><strong>Botón de Mesero y Cuenta:</strong> Reduce los tiempos muertos y rotación de mesa un 25%.</span>
+          </div>
+
+          <div class="flex items-start gap-2 text-zinc-300">
+            <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+            <span><strong>SEO en Google Maps:</strong> Las calificaciones 5 estrellas van directo a posicionar a Candombe.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tips para la Reunión -->
+      <div class="glass-card rounded-3xl p-4 border border-zinc-800 text-[11px] text-zinc-400 space-y-2">
+        <span class="font-bold text-amber-400 flex items-center gap-1.5">
+          <i class="fa-solid fa-lightbulb"></i>
+          Tip para el Domingo:
+        </span>
+        <p>
+          Dile al dueño: <em>"Menüpp te quiere alquilar su sistema por $250.000 mensuales. Yo te entrego tu propio sistema a la medida por un pago único, con tu marca, sin intermediarios y adaptado exactamente a tu parrilla."</em>
+        </p>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- ==================== MODAL DE PERSONALIZACIÓN DE PLATO (TÉRMINO Y SIDES) ==================== -->
+  <div id="customizerModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-zinc-900 w-full max-w-md rounded-t-[32px] sm:rounded-3xl p-5 border-t sm:border border-zinc-800 shadow-2xl max-h-[90vh] overflow-y-auto no-scrollbar space-y-4">
+      
+      <div class="flex items-start justify-between">
+        <div>
+          <span class="text-[10px] font-mono font-bold bg-brand-orange text-white px-2 py-0.5 rounded" id="modalBadge">Corte Insignia</span>
+          <h3 class="font-display text-2xl text-white tracking-wide mt-1" id="modalTitle">Bife de Chorizo Madurado</h3>
+          <p class="text-xs text-zinc-400 mt-0.5 leading-snug" id="modalDesc">400g madurado a la brasa con sal marina.</p>
+        </div>
+        <button onclick="closeCustomizer()" class="w-8 h-8 rounded-full bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- SELECTOR VISUAL DE TÉRMINO DE CARNE (Solo visible para carnes) -->
+      <div id="meatDonenessSection" class="space-y-2 pt-2 border-t border-zinc-800">
+        <label class="text-xs font-bold text-zinc-200 block flex items-center justify-between">
+          <span>🥩 Término de la Carne:</span>
+          <span class="text-[10px] text-brand-orange font-normal" id="selectedDonenessLabel">Tres Cuartos (3/4)</span>
+        </label>
+        
+        <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+          <button type="button" onclick="selectDoneness('Término Azul (1/4)', this)" class="doneness-btn py-2 px-3 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-zinc-600 text-left transition-all">
+            <span class="block text-red-500 font-bold">🔴 Término Azul (1/4)</span>
+            <span class="text-[10px] text-zinc-400 font-normal">Sellado, centro rojo frío</span>
+          </button>
+
+          <button type="button" onclick="selectDoneness('Término Medio (1/2)', this)" class="doneness-btn py-2 px-3 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-zinc-600 text-left transition-all">
+            <span class="block text-orange-500 font-bold">🟠 Término Medio (1/2)</span>
+            <span class="text-[10px] text-zinc-400 font-normal">Jugoso, centro rosado</span>
+          </button>
+
+          <button type="button" onclick="selectDoneness('Tres Cuartos (3/4)', this)" class="doneness-btn active py-2 px-3 rounded-xl bg-brand-orange/20 border border-brand-orange text-white text-left transition-all">
+            <span class="block text-amber-400 font-bold">🟡 Tres Cuartos (3/4)</span>
+            <span class="text-[10px] text-zinc-300 font-normal">Recomendado del parrillero</span>
+          </button>
+
+          <button type="button" onclick="selectDoneness('Bien Asado (Cocido)', this)" class="doneness-btn py-2 px-3 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-zinc-600 text-left transition-all">
+            <span class="block text-amber-700 font-bold">🟤 Bien Asado</span>
+            <span class="text-[10px] text-zinc-400 font-normal">Bien dorado, sin tonos rojos</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SELECTOR DE ACOMPAÑAMIENTO (Solo para platos con guarnición) -->
+      <div id="sideDishSection" class="space-y-2 pt-2 border-t border-zinc-800">
+        <label class="text-xs font-bold text-zinc-200 block">🥔 Elige tu Acompañamiento:</label>
+        <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+          <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-zinc-600">
+            <input type="radio" name="sideChoice" value="Papas Rústicas con Romero" checked class="accent-orange-500">
+            <span>Papas Rústicas</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-zinc-600">
+            <input type="radio" name="sideChoice" value="Yuquitas Fritas con Suero" class="accent-orange-500">
+            <span>Yuquitas Fritas</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-zinc-600">
+            <input type="radio" name="sideChoice" value="Plátano Maduro con Queso" class="accent-orange-500">
+            <span>Plátano Maduro</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-zinc-600">
+            <input type="radio" name="sideChoice" value="Ensalada Fresca de la Casa" class="accent-orange-500">
+            <span>Ensalada Fresca</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SELECTOR DE BEBIDAS (Temperatura y Hielo) -->
+      <div id="drinkSection" class="hidden space-y-2 pt-2 border-t border-zinc-800">
+        <label class="text-xs font-bold text-zinc-200 block">🍹 Preferencia de Servicio:</label>
+        <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+          <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-zinc-600">
+            <input type="radio" name="drinkChoice" value="Bien Helada con Hielo" checked class="accent-orange-500">
+            <span>Con Hielo y Limón</span>
+          </label>
+          <label class="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-zinc-600">
+            <input type="radio" name="drinkChoice" value="Fría Sin Hielo" class="accent-orange-500">
+            <span>Sin Hielo</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Notas especiales para cocina -->
+      <div>
+        <label class="text-[11px] font-bold text-zinc-400 block mb-1">Instrucciones Especiales para Cocina:</label>
+        <input type="text" id="modalNotes" placeholder="Ej: Chimichurri aparte, sin sal adicional..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-orange">
+      </div>
+
+      <!-- Cantidad y Botón de Agregar -->
+      <div class="flex items-center justify-between pt-3 border-t border-zinc-800">
+        <div class="flex items-center gap-3 bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-1.5">
+          <button onclick="changeModalQty(-1)" class="w-7 h-7 rounded-lg text-zinc-400 hover:text-white font-bold text-base">-</button>
+          <span class="font-bold text-sm text-white font-mono w-4 text-center" id="modalQuantity">1</span>
+          <button onclick="changeModalQty(1)" class="w-7 h-7 rounded-lg text-zinc-400 hover:text-white font-bold text-base">+</button>
+        </div>
+
+        <button onclick="addItemToCartFromModal()" class="flex-1 ml-3 py-3 rounded-xl bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold text-xs uppercase tracking-wider shadow-glow-orange flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+          <i class="fa-solid fa-plus"></i>
+          <span>Agregar • <span id="modalFinalPrice">$46.000</span></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL DE COMANDA / CARRITO FINAL ==================== -->
+  <div id="cartModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-zinc-900 w-full max-w-md rounded-t-[32px] sm:rounded-3xl p-5 border-t sm:border border-zinc-800 shadow-2xl max-h-[88vh] overflow-y-auto no-scrollbar space-y-4">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-receipt text-brand-orange text-lg"></i>
+          <div>
+            <h3 class="font-display text-2xl text-white tracking-wide leading-none">COMANDA DE LA MESA</h3>
+            <span class="text-[11px] text-zinc-400" id="cartModalTable">Mesa 4</span>
+          </div>
+        </div>
+        <button onclick="closeCartModal()" class="w-8 h-8 rounded-full bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="cartItemsList" class="space-y-2.5 max-h-56 overflow-y-auto no-scrollbar">
+        <!-- Renderizado dinámico de platos agregados -->
+      </div>
+
+      <div class="p-3 bg-zinc-950 rounded-2xl border border-zinc-800/80 space-y-1.5 text-xs">
+        <div class="flex justify-between text-zinc-400">
+          <span>Subtotal:</span>
+          <span class="font-mono text-white" id="cartSubtotal">$0</span>
+        </div>
+        <div class="flex justify-between text-zinc-400 items-center">
+          <span class="flex items-center gap-1.5">
+            <span>Propina Sugerida (10%):</span>
+            <input type="checkbox" id="includeTipCheck" onchange="toggleTip()" checked class="accent-orange-500">
+          </span>
+          <span class="font-mono text-white" id="cartTip">$0</span>
+        </div>
+        <div class="flex justify-between text-base font-bold text-white pt-2 border-t border-zinc-800">
+          <span>Total a Pagar:</span>
+          <span class="font-mono text-brand-orange text-lg" id="cartTotalFinal">$0</span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <button onclick="sendOrderWhatsApp()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-950/50 flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>Enviar Comanda a Cocina por WhatsApp</span>
+        </button>
+
+        <button onclick="closeCartModal()" class="w-full py-2.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-zinc-400 font-bold text-xs">
+          Seguir Agregando Platos
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL DE SELECCIÓN DE MESA ==================== -->
+  <div id="tableModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-zinc-900 w-full max-w-sm rounded-3xl p-5 border border-zinc-800 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-display text-2xl text-white tracking-wide">SELECCIONA TU MESA</h3>
+        <button onclick="closeTableSelector()" class="text-zinc-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-2 text-xs">
+        <label class="text-xs font-bold text-zinc-300 block">Número o Zona de Mesa:</label>
+        <select id="tableNumberSelect" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-brand-orange">
+          <option value="Mesa 1">Mesa 1 • Zona Principal</option>
+          <option value="Mesa 2">Mesa 2 • Zona Principal</option>
+          <option value="Mesa 3">Mesa 3 • Zona Principal</option>
+          <option value="Mesa 4" selected>Mesa 4 • Vista a la Hacienda</option>
+          <option value="Mesa 5">Mesa 5 • Terraza Campestre</option>
+          <option value="Mesa 6">Mesa 6 • Terraza Campestre</option>
+          <option value="Mesa 4 VIP">Mesa 4 VIP / Kiosko</option>
+          <option value="Terraza 3">Terraza 3 • Aire Libre</option>
+          <option value="Barra Principal">Barra Principal</option>
+          <option value="Para Llevar">Para Llevar / Domicilio</option>
+        </select>
+      </div>
+
+      <button onclick="confirmTableChoice()" class="w-full py-3 rounded-xl bg-brand-orange text-white font-bold text-xs uppercase tracking-wider shadow-glow-orange">
+        Guardar Mesa
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPT DE FUNCIONAMIENTO COMPLETO ==================== -->
+  <script>
+    // CATÁLOGO DE PRODUCTOS DE CANDOMBE PARRILLA
+    const catalog = {
+      cortes: [
+        { id: 1, name: 'Bife de Chorizo Madurado (400g)', price: 46000, badge: '🔥 Corte Insignia', desc: 'Corte jugoso madurado a la brasa con sal marina de grano grueso. Incluye acompañamiento.', img: './assets/img_9.jpg', type: 'meat' },
+        { id: 2, name: 'Baby Beef al Carbón (350g)', price: 42000, badge: '⭐ Ultra Tierno', desc: 'Corte magro y suave sellado a fuego vivo con mantequilla de romero. Incluye acompañamiento.', img: './assets/img_11.jpg', type: 'meat' },
+        { id: 3, name: 'Costillar BBQ Ahumado (500g)', price: 39000, badge: '🍖 Cocción Lenta', desc: 'Costillitas tiernas glaseadas durante 6 horas con salsa BBQ artesanal de panela y café.', img: './assets/img_5.jpg', type: 'dish' }
+      ],
+      compartir: [
+        { id: 7, name: 'Gran Banquete Candombe (4 Pers.)', price: 110000, badge: '👨‍👩‍👦 Para 4 Personas', desc: 'Bife de chorizo (400g), costillas BBQ, chorizo artesanal, morcilla crocante, papas rústicas y plátano maduro al gratín.', img: './assets/img_10.jpg', type: 'meat' },
+        { id: 6, name: 'Picada Criolla de la Hacienda', price: 68000, badge: '⭐ Para 2-3 Pers.', desc: 'Chicharrón carnudo crujiente, empanaditas mechadas, trocitos de baby beef, yuquitas fritas y chimichurri criollo.', img: './assets/img_6.jpg', type: 'dish' }
+      ],
+      entradas: [
+        { id: 4, name: 'Choripán Rústico en Ciabatta', price: 21500, badge: '🔥 Favorito', desc: 'Chorizo parrillero argentino en pan ciabatta crocante, mozzarella fundido y chimichurri criollo.', img: './assets/img_3.jpg', type: 'dish' },
+        { id: 5, name: 'Empanaditas de Carne Mechada (x10)', price: 16000, badge: '🥟 Para Picar', desc: 'Diez empanaditas crocantes acompañadas de guacamole casero y ají de la casa.', img: './assets/img_2.jpg', type: 'dish' }
+      ],
+      burgers: [
+        { id: 8, name: 'Hamburguesa Candombe Parrillera', price: 28000, badge: '🍔 Burger Master', desc: '200g de res al carbón, queso cheddar fundido, tocineta ahumada, cebolla caramelizada y papas.', img: './assets/img_1.jpg', type: 'meat' },
+        { id: 9, name: 'Burger Campestre BBQ de Res', price: 26000, badge: '⭐ Ahumada', desc: 'Carne al carbón, aros de cebolla crocantes, salsa BBQ artesanal, queso campesino y papas.', img: './assets/img_7.jpg', type: 'meat' }
+      ],
+      bebidas: [
+        { id: 10, name: 'Jarra de Sangría de la Casa (1L)', price: 48000, badge: '🍷 Para la Mesa', desc: 'Vino tinto infusionado con frutas cítricas, manzana verde y hierbabuena. Rinde 4 copas.', img: './assets/img_12.jpg', type: 'drink' },
+        { id: 11, name: 'Limonada de Coco Cremosa', price: 12000, badge: '🥥 Favorita', desc: 'Limonada natural frapé con crema de coco artesanal y hierbabuena fresca.', img: './assets/img_12.jpg', type: 'drink' },
+        { id: 12, name: 'Cerveza Club Colombia Dorada / Roja', price: 8000, badge: '🍺 Helada', desc: 'Bien fría servida en copa cervecera.', img: './assets/img_4.jpg', type: 'drink' }
+      ]
+    };
+
+    let currentTable = 'Mesa 4';
+    let currentRating = 5;
+    let cart = [];
+    let activeItem = null;
+    let modalQty = 1;
+    let selectedDoneness = 'Tres Cuartos (3/4)';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAllSections();
+      setupMouseInteractions();
+
+      const dateInput = document.getElementById('resDate');
+      if (dateInput) {
+        const today = new Date();
+        today.setDate(today.getDate() + 2);
+        dateInput.value = today.toISOString().split('T')[0];
+      }
+    });
+
+    // ==================== CONFIGURACIÓN DE INTERACCIÓN MOUSE / PC (WHEEL + DRAG) ====================
+    function setupMouseInteractions() {
+      // 1. Barra de Categorías: Mouse Wheel + Drag
+      setupScrollableElement('categoryNavBar');
+      // 2. Barra de Historias: Mouse Wheel + Drag
+      setupScrollableElement('storiesBar');
+    }
+
+    function setupScrollableElement(elemId) {
+      const el = document.getElementById(elemId);
+      if (!el) return;
+
+      // SOPORTE DE RUEDA DE RATÓN (MOUSE WHEEL) HORIZONTAL
+      el.addEventListener('wheel', (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          el.scrollLeft += e.deltaY * 1.5;
+        }
+      }, { passive: false });
+
+      // SOPORTE DE CLIC Y ARRASTRE (DRAG TO SCROLL)
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      el.addEventListener('mousedown', (e) => {
+        isDown = true;
+        el.classList.add('cursor-grabbing');
+        el.classList.remove('cursor-grab');
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        isDown = false;
+        el.classList.remove('cursor-grabbing');
+        el.classList.add('cursor-grab');
+      });
+
+      el.addEventListener('mouseup', () => {
+        isDown = false;
+        el.classList.remove('cursor-grabbing');
+        el.classList.add('cursor-grab');
+      });
+
+      el.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - el.offsetLeft;
+        const walk = (x - startX) * 2;
+        el.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    // BOTONES DE FLECHA IZQUIERDA Y DERECHA PARA CATEGORÍAS
+    function scrollNavCategories(direction) {
+      const nav = document.getElementById('categoryNavBar');
+      const amount = direction === 'left' ? -180 : 180;
+      nav.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    // RENDERIZAR TARJETAS DE PLATOS
+    function renderAllSections(filterText = '') {
+      for (const [secKey, items] of Object.entries(catalog)) {
+        const container = document.getElementById(`container-${secKey}`);
+        if (!container) continue;
+
+        const filtered = items.filter(item => {
+          if (!filterText) return true;
+          return item.name.toLowerCase().includes(filterText) || item.desc.toLowerCase().includes(filterText);
+        });
+
+        if (filtered.length === 0) {
+          container.innerHTML = `<div class="p-3 text-center text-xs text-zinc-500 bg-zinc-900/40 rounded-xl">Sin resultados en esta categoría.</div>`;
+          continue;
+        }
+
+        container.innerHTML = filtered.map(item => `
+          <div onclick="openCustomizer(${item.id})" class="food-card bg-brand-card/90 rounded-2xl p-3 border border-brand-border flex gap-3 cursor-pointer group shadow-lg">
+            <div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 bg-zinc-950 relative">
+              <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-1 left-1 bg-brand-orange text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded font-mono shadow-sm">
+                ${item.badge}
+              </span>
+            </div>
+
+            <div class="flex-1 flex flex-col justify-between py-0.5">
+              <div>
+                <h4 class="font-display text-xl text-white tracking-wide leading-tight group-hover:text-brand-orange transition-colors">
+                  ${item.name}
+                </h4>
+                <p class="text-[11px] text-zinc-400 line-clamp-2 mt-0.5 leading-snug">
+                  ${item.desc}
+                </p>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <span class="font-display text-2xl text-white font-bold tracking-tight">
+                  $${item.price.toLocaleString('es-CO')}
+                </span>
+                <button class="w-8 h-8 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-orange-950/50 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // DESPLAZAMIENTO SUAVE A CATEGORÍA
+    function scrollToCategory(elementId) {
+      // Si estamos en otra vista, cambiar a menú primero
+      switchView('menu');
+
+      setTimeout(() => {
+        const el = document.getElementById(elementId);
+        const phoneArea = document.getElementById('phoneScrollArea');
+        
+        if (el && phoneArea) {
+          const offset = 140;
+          const targetTop = el.offsetTop - offset;
+          phoneArea.scrollTo({ top: targetTop, behavior: 'smooth' });
+        }
+
+        const pills = document.querySelectorAll('.cat-pill');
+        pills.forEach(p => {
+          if (p.getAttribute('onclick') && p.getAttribute('onclick').includes(elementId)) {
+            p.className = "cat-pill active px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-brand-orange text-white shadow-glow-orange transition-all";
+            // Centrar píldora en barra
+            p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } else {
+            p.className = "cat-pill px-4 py-1.5 rounded-full text-xs font-bold shrink-0 bg-zinc-900 text-zinc-300 border border-zinc-800 hover:border-zinc-600 transition-all";
+          }
+        });
+      }, 50);
+    }
+
+    // BUSCADOR EN VIVO
+    function handleSearch(val) {
+      const clearBtn = document.getElementById('clearSearchBtn');
+      const text = val.toLowerCase().trim();
+      if (text) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderAllSections(text);
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('menuSearch');
+      input.value = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      renderAllSections('');
+    }
+
+    // CAMBIO DE VISTAS (HUB, MENÚ, RESERVAS, OPINIÓN, SEDE)
+    function switchView(viewName) {
+      const views = ['viewHub', 'viewMenu', 'viewReservas', 'viewOpinion', 'viewSede'];
+      views.forEach(v => {
+        const el = document.getElementById(v);
+        if (el) el.classList.add('hidden');
+      });
+
+      const navHub = document.getElementById('navBtnHub');
+      const navMenu = document.getElementById('navBtnMenu');
+
+      if (viewName === 'hub') {
+        document.getElementById('viewHub').classList.remove('hidden');
+        if (navHub) navHub.className = "flex flex-col items-center gap-1 text-brand-orange transition-colors";
+        if (navMenu) navMenu.className = "flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-colors";
+      } else if (viewName === 'menu') {
+        document.getElementById('viewMenu').classList.remove('hidden');
+        if (navMenu) navMenu.className = "flex flex-col items-center gap-1 text-brand-orange transition-colors";
+        if (navHub) navHub.className = "flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-colors";
+        updateCartTotals();
+      } else if (viewName === 'reservas') {
+        document.getElementById('viewReservas').classList.remove('hidden');
+      } else if (viewName === 'opinion') {
+        document.getElementById('viewOpinion').classList.remove('hidden');
+      } else if (viewName === 'sede') {
+        document.getElementById('viewSede').classList.remove('hidden');
+      }
+
+      const phoneArea = document.getElementById('phoneScrollArea');
+      if (phoneArea) phoneArea.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // PERSONALIZADOR DE PLATO
+    function openCustomizer(itemId) {
+      activeItem = null;
+      for (const list of Object.values(catalog)) {
+        const found = list.find(i => i.id === itemId);
+        if (found) { activeItem = found; break; }
+      }
+      if (!activeItem) return;
+
+      modalQty = 1;
+      document.getElementById('modalQuantity').textContent = '1';
+      document.getElementById('modalBadge').textContent = activeItem.badge;
+      document.getElementById('modalTitle').textContent = activeItem.name;
+      document.getElementById('modalDesc').textContent = activeItem.desc;
+      document.getElementById('modalNotes').value = '';
+      document.getElementById('modalFinalPrice').textContent = '$' + activeItem.price.toLocaleString('es-CO');
+
+      const meatSec = document.getElementById('meatDonenessSection');
+      const sideSec = document.getElementById('sideDishSection');
+      const drinkSec = document.getElementById('drinkSection');
+
+      if (activeItem.type === 'meat') {
+        meatSec.classList.remove('hidden');
+        sideSec.classList.remove('hidden');
+        drinkSec.classList.add('hidden');
+      } else if (activeItem.type === 'drink') {
+        meatSec.classList.add('hidden');
+        sideSec.classList.add('hidden');
+        drinkSec.classList.remove('hidden');
+      } else {
+        meatSec.classList.add('hidden');
+        sideSec.classList.remove('hidden');
+        drinkSec.classList.add('hidden');
+      }
+
+      document.getElementById('customizerModal').classList.remove('hidden');
+    }
+
+    function closeCustomizer() {
+      document.getElementById('customizerModal').classList.add('hidden');
+      activeItem = null;
+    }
+
+    function selectDoneness(label, btnElement) {
+      selectedDoneness = label;
+      document.getElementById('selectedDonenessLabel').textContent = label;
+
+      const buttons = document.querySelectorAll('.doneness-btn');
+      buttons.forEach(b => {
+        b.className = "doneness-btn py-2 px-3 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-zinc-600 text-left transition-all";
+      });
+      btnElement.className = "doneness-btn active py-2 px-3 rounded-xl bg-brand-orange/20 border border-brand-orange text-white text-left transition-all";
+    }
+
+    function changeModalQty(delta) {
+      modalQty += delta;
+      if (modalQty < 1) modalQty = 1;
+      document.getElementById('modalQuantity').textContent = modalQty;
+      if (activeItem) {
+        const total = activeItem.price * modalQty;
+        document.getElementById('modalFinalPrice').textContent = '$' + total.toLocaleString('es-CO');
+      }
+    }
+
+    function addItemToCartFromModal() {
+      if (!activeItem) return;
+
+      let side = '';
+      if (activeItem.type === 'meat' || activeItem.type === 'dish') {
+        const selectedRadio = document.querySelector('input[name="sideChoice"]:checked');
+        if (selectedRadio) side = selectedRadio.value;
+      } else if (activeItem.type === 'drink') {
+        const selectedRadio = document.querySelector('input[name="drinkChoice"]:checked');
+        if (selectedRadio) side = selectedRadio.value;
+      }
+
+      const notes = document.getElementById('modalNotes').value.trim();
+
+      cart.push({
+        id: activeItem.id,
+        name: activeItem.name,
+        price: activeItem.price,
+        qty: modalQty,
+        doneness: activeItem.type === 'meat' ? selectedDoneness : '',
+        side: side,
+        notes: notes
+      });
+
+      closeCustomizer();
+      playChimeAudio(440, 0.15); // Sonido suave de agregación
+      showToast(`¡${modalQty}x ${activeItem.name} agregado!`);
+      updateCartTotals();
+    }
+
+    // ACTUALIZAR TOTALES DEL CARRITO
+    function updateCartTotals() {
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      const floatingBar = document.getElementById('floatingCartBar');
+      if (floatingBar) {
+        if (totalCount > 0) {
+          floatingBar.classList.remove('hidden');
+          document.getElementById('floatingCartCount').textContent = totalCount;
+          document.getElementById('floatingCartTotal').textContent = '$' + subtotal.toLocaleString('es-CO');
+        } else {
+          floatingBar.classList.add('hidden');
+        }
+      }
+    }
+
+    // MODAL DE COMANDA / CARRITO
+    function openCartModal() {
+      if (cart.length === 0) {
+        showToast('Tu comanda está vacía. Selecciona un plato.');
+        return;
+      }
+
+      document.getElementById('cartModalTable').textContent = currentTable;
+      const listContainer = document.getElementById('cartItemsList');
+
+      listContainer.innerHTML = cart.map((item, idx) => `
+        <div class="bg-zinc-950 p-3 rounded-2xl border border-zinc-800 flex items-center justify-between gap-3 text-xs">
+          <div class="flex-1">
+            <span class="font-bold text-white block text-sm leading-tight">${item.qty}x ${item.name}</span>
+            ${item.doneness ? `<span class="text-[10px] text-amber-400 block mt-0.5">🥩 Término: ${item.doneness}</span>` : ''}
+            ${item.side ? `<span class="text-[10px] text-zinc-400 block">🥔 Acomp: ${item.side}</span>` : ''}
+            ${item.notes ? `<span class="text-[10px] text-zinc-500 italic block">Nota: "${item.notes}"</span>` : ''}
+          </div>
+          <div class="text-right shrink-0">
+            <span class="font-bold font-mono text-white text-sm block">$${(item.price * item.qty).toLocaleString('es-CO')}</span>
+            <button onclick="removeCartItem(${idx})" class="text-red-400 hover:text-red-300 text-[10px] mt-1">
+              <i class="fa-solid fa-trash-can mr-1"></i>Eliminar
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      recalculateCart();
+      document.getElementById('cartModal').classList.remove('hidden');
+    }
+
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      if (cart.length === 0) {
+        closeCartModal();
+      } else {
+        openCartModal();
+      }
+      updateCartTotals();
+    }
+
+    function closeCartModal() {
+      document.getElementById('cartModal').classList.add('hidden');
+    }
+
+    function toggleTip() {
+      recalculateCart();
+    }
+
+    function recalculateCart() {
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const tipChecked = document.getElementById('includeTipCheck').checked;
+      const tip = tipChecked ? Math.round(subtotal * 0.1) : 0;
+      const total = subtotal + tip;
+
+      document.getElementById('cartSubtotal').textContent = '$' + subtotal.toLocaleString('es-CO');
+      document.getElementById('cartTip').textContent = '$' + tip.toLocaleString('es-CO');
+      document.getElementById('cartTotalFinal').textContent = '$' + total.toLocaleString('es-CO');
+    }
+
+    // ENVIAR COMANDA A WHATSAPP
+    function sendOrderWhatsApp() {
+      if (cart.length === 0) return;
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const tipChecked = document.getElementById('includeTipCheck').checked;
+      const tip = tipChecked ? Math.round(subtotal * 0.1) : 0;
+      const total = subtotal + tip;
+
+      let msg = `🔥 *NUEVA COMANDA - CANDOMBE PARRILLA* 🔥%0A`;
+      msg += `📍 *Ubicación:* ${currentTable}%0A`;
+      msg += `⏰ *Hora:* ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}%0A`;
+      msg += `-----------------------------------%0A`;
+
+      cart.forEach((item, i) => {
+        msg += `*${item.qty}x ${item.name}* - $${(item.price * item.qty).toLocaleString('es-CO')}%0A`;
+        if (item.doneness) msg += `   🥩 _Término:_ ${item.doneness}%0A`;
+        if (item.side) msg += `   🥔 _Acompañamiento:_ ${item.side}%0A`;
+        if (item.notes) msg += `   ✏️ _Nota:_ ${item.notes}%0A`;
+        msg += `%0A`;
+      });
+
+      msg += `-----------------------------------%0A`;
+      msg += `💰 *Subtotal:* $${subtotal.toLocaleString('es-CO')}%0A`;
+      if (tip > 0) msg += `🤝 *Propina Sugerida (10%):* $${tip.toLocaleString('es-CO')}%0A`;
+      msg += `⭐ *TOTAL COMANDA:* $${total.toLocaleString('es-CO')}%0A%0A`;
+      msg += `_Comanda generada automáticamente desde Menú Digital Candombe._`;
+
+      const phone = "573151020757";
+      const url = `https://wa.me/${phone}?text=${msg}`;
+      window.open(url, '_blank');
+      showToast('¡Comanda enviada a WhatsApp!');
+      closeCartModal();
+    }
+
+    // RESERVAS
+    function submitReservation(e) {
+      e.preventDefault();
+      const name = document.getElementById('resName').value;
+      const phone = document.getElementById('resPhone').value;
+      const guests = document.getElementById('resGuests').value;
+      const date = document.getElementById('resDate').value;
+      const time = document.getElementById('resTime').value;
+      const occasion = document.getElementById('resOccasion').value;
+      const notes = document.getElementById('resNotes').value;
+
+      let msg = `📅 *NUEVA RESERVA - CANDOMBE PARRILLA* 📅%0A`;
+      msg += `👤 *Cliente:* ${name}%0A`;
+      msg += `📱 *Teléfono:* ${phone}%0A`;
+      msg += `👥 *Personas:* ${guests}%0A`;
+      msg += `📆 *Fecha:* ${date}%0A`;
+      msg += `⏰ *Hora:* ${time}%0A`;
+      msg += `🎉 *Ocasión:* ${occasion}%0A`;
+      if (notes) msg += `✏️ *Notas:* ${notes}%0A`;
+
+      const targetPhone = "573151020757";
+      window.open(`https://wa.me/${targetPhone}?text=${msg}`, '_blank');
+      showToast('¡Solicitud de reserva enviada por WhatsApp!');
+    }
+
+    // CALIFICACIÓN / CRM
+    function setRating(val) {
+      currentRating = val;
+      const stars = document.querySelectorAll('#starRatingContainer i');
+      stars.forEach((s, idx) => {
+        if (idx < val) {
+          s.className = "fa-solid fa-star cursor-pointer text-amber-400 transition-colors";
+        } else {
+          s.className = "fa-solid fa-star cursor-pointer text-zinc-700 transition-colors";
+        }
+      });
+
+      const label = document.getElementById('ratingLabel');
+      if (val === 5) label.textContent = "¡Excelente experiencia! (5 Estrellas)";
+      else if (val === 4) label.textContent = "Muy buena visita (4 Estrellas)";
+      else if (val === 3) label.textContent = "Regular, podemos mejorar (3 Estrellas)";
+      else label.textContent = "No cumplió expectativas (Atención prioritaria)";
+    }
+
+    function submitReview() {
+      const text = document.getElementById('opinionText').value.trim();
+      if (currentRating === 5) {
+        showToast('¡Muchas gracias! Redirigiendo a Google Maps...');
+        setTimeout(() => {
+          window.open('https://maps.google.com', '_blank');
+        }, 1200);
+      } else {
+        const msg = `⭐ *COMENTARIO DE CLIENTE CANDOMBE* ⭐%0ACalificación: ${currentRating}/5 Estrellas%0AMesa: ${currentTable}%0AComentario: ${text || 'Sin texto'}`;
+        window.open(`https://wa.me/573151020757?text=${msg}`, '_blank');
+        showToast('¡Comentario enviado directamente a la gerencia!');
+      }
+    }
+
+    // LLAMAR AL MESERO Y PEDIR CUENTA
+    function triggerCallWaiter() {
+      playBellSound();
+      showToast(`🔔 ¡Mesero notificado para ${currentTable}!`);
+    }
+
+    function triggerAskBill() {
+      playBellSound();
+      showToast(`🧾 ¡Solicitud de cuenta enviada para ${currentTable}!`);
+    }
+
+    // SELECTOR DE MESA
+    function openTableSelector() {
+      document.getElementById('tableModal').classList.remove('hidden');
+    }
+
+    function closeTableSelector() {
+      document.getElementById('tableModal').classList.add('hidden');
+    }
+
+    function confirmTableChoice() {
+      const sel = document.getElementById('tableNumberSelect').value;
+      setTableDirect(sel);
+      closeTableSelector();
+    }
+
+    function setTableDirect(tableName) {
+      currentTable = tableName;
+      const display = document.getElementById('currentTableDisplay');
+      if (display) display.textContent = tableName;
+
+      // Actualizar botones de mesa en PC si existen
+      const quickBtns = document.querySelectorAll('.table-quick-btn');
+      quickBtns.forEach(b => {
+        if (b.textContent.includes(tableName)) {
+          b.className = "table-quick-btn py-2 px-3 rounded-xl bg-brand-orange/20 border border-brand-orange text-brand-orange text-left transition-all font-bold";
+        } else {
+          b.className = "table-quick-btn py-2 px-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-brand-orange hover:text-brand-orange text-left transition-all font-semibold";
+        }
+      });
+
+      showToast(`Mesa configurada: ${tableName}`);
+    }
+
+    // TOAST NOTIFICACIÓN
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastMessage');
+      if (!toast || !text) return;
+
+      text.textContent = msg;
+      toast.classList.remove('opacity-0', '-translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', '-translate-y-4');
+      }, 2600);
+    }
+
+    // ROTACIÓN AUTOMÁTICA DEL BANNER PROMOCIONAL (DINÁMICO / MOVEDIZO)
+    const promoSlides = [
+      {
+        tag: '🔥 RECOMENDACIÓN DEL CHEF',
+        title: 'BIFE DE CHORIZO MADURADO',
+        desc: '400g a la brasa de leña de quebracho con papas rústicas.',
+        img: './assets/img_9.jpg',
+        itemId: 1
+      },
+      {
+        tag: '🍷 ESPECIAL DE FIN DE SEMANA',
+        title: 'JARRA DE SANGRÍA (1 LITRO)',
+        desc: 'Vino tinto infusionado con frutas cítricas y hierbabuena fresca.',
+        img: './assets/img_12.jpg',
+        itemId: 10
+      },
+      {
+        tag: '👨‍👩‍👦 FAVORITO PARA COMPARTIR',
+        title: 'GRAN BANQUETE CANDOMBE',
+        desc: 'Bife, costillas BBQ, chorizo parrillero y plátano al gratín.',
+        img: './assets/img_10.jpg',
+        itemId: 7
+      }
+    ];
+
+    let currentPromoIdx = 0;
+    setInterval(() => {
+      const banner = document.getElementById('promoBannerCard');
+      if (!banner) return;
+      currentPromoIdx = (currentPromoIdx + 1) % promoSlides.length;
+      const slide = promoSlides[currentPromoIdx];
+      
+      banner.style.opacity = '0.3';
+      banner.style.transition = 'opacity 0.25s ease';
+      
+      setTimeout(() => {
+        banner.innerHTML = `
+          <div class="relative z-10 max-w-[70%] space-y-1">
+            <span class="text-[9px] font-black uppercase tracking-widest bg-brand-orange text-white px-2 py-0.5 rounded font-mono shadow-sm">
+              ${slide.tag}
+            </span>
+            <h3 class="font-display text-2xl text-white tracking-wide leading-tight">
+              ${slide.title}
+            </h3>
+            <p class="text-[11px] text-zinc-300 leading-snug">
+              ${slide.desc}
+            </p>
+          </div>
+
+          <div class="relative z-10 shrink-0">
+            <button onclick="openCustomizer(${slide.itemId})" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold text-xs shadow-glow-orange hover:scale-105 transition-transform flex items-center gap-1.5">
+              <span>Pedir</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+
+          <img src="${slide.img}" alt="Promo" class="absolute right-0 top-0 w-1/2 h-full object-cover opacity-25 filter blur-[1px]">
+        `;
+        banner.style.opacity = '1';
+      }, 250);
+    }, 4500);
+
+    // EFECTOS DE SONIDO WEB AUDIO SINTETIZADOS (Sin depender de archivos externos)
+    function playBellSound() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime); // Nota A5
+        osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.6);
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.6);
+      } catch (e) {
+        // Audio deshabilitado o no interactuado
+      }
+    }
+
+    function playChimeAudio(freq = 520, duration = 0.15) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {}
+    }
+  </script>
+</body>
+</html>
