@@ -465,96 +465,879 @@
     // Platos reales del menú de Candombe Parrilla
     const dishes = [
       {
-        id: 1,
-        cat: 'CORTES',
-        nombre: 'Bife de Chorizo (400g)',
-        desc: 'Corte madurado y jugoso a la brasa con sal marina, papas a la francesa y chimichurri.',
-        precio: 46000,
-        img: './assets/img_9.jpg',
-        badge: 'Corte Estrella'
+            "id": 1,
+            "cat": "CORTES",
+            "nombre": "Entraña Angus Importada (400g)",
+            "desc": "Corte premium de importación con marmoleo excepcional, asado a la brasa con sal marina y chimichurri. Incluye acompañamiento.",
+            "precio": 94000,
+            "img": "./assets/bife_de_chorizo.jpg",
+            "badge": "🥩 Angus Certificado"
       },
       {
-        id: 2,
-        cat: 'CORTES',
-        nombre: 'Baby Beef al Carbón (350g)',
-        desc: 'Corte magro y ultra suave sellado a fuego vivo, acompañado de ensalada fresca y papas.',
-        precio: 42000,
-        img: './assets/img_11.jpg',
-        badge: 'Recomendado'
+            "id": 2,
+            "cat": "CORTES",
+            "nombre": "Picanha Angus Importada (400g)",
+            "desc": "Espectacular corte con capa de grasa crujiente y jugosa, sellado al carbón al punto exacto. Incluye acompañamiento.",
+            "precio": 88000,
+            "img": "./assets/img_11.jpg",
+            "badge": "🔥 Tapa de Cuadril Top"
       },
       {
-        id: 3,
-        cat: 'CORTES',
-        nombre: 'Costillas BBQ Ahumadas (500g)',
-        desc: 'Costillitas tiernas glaseadas con salsa barbacoa artesanal de la casa.',
-        precio: 39000,
-        img: './assets/img_5.jpg',
-        badge: 'Favorito'
+            "id": 3,
+            "cat": "CORTES",
+            "nombre": "Rib Eye Angus Ojo de Bife (400g)",
+            "desc": "El rey del sabor y la terneza. Máxima jugosidad con marmoleo gourmet madurado a la brasa. Incluye acompañamiento.",
+            "precio": 97000,
+            "img": "./assets/bife_de_chorizo.jpg",
+            "badge": "⭐ Corte Supremo"
       },
       {
-        id: 4,
-        cat: 'ENTRADAS',
-        nombre: 'Choripán Argentino Tradicional',
-        desc: 'Chorizo parrillero argentino en pan crocante, lechuga, tomate fresco, chimichurri y papas.',
-        precio: 21500,
-        img: './assets/img_3.jpg',
-        badge: 'Típico'
+            "id": 4,
+            "cat": "CORTES",
+            "nombre": "Punta de Anca - Selección Chef (350g)",
+            "desc": "Punta de anca madurada seleccionada por Don Rubén, asada lentamente a fuego de carbón vegetal. Incluye acompañamiento.",
+            "precio": 64000,
+            "img": "./assets/img_11.jpg",
+            "badge": "👨‍🍳 Selección del Chef"
       },
       {
-        id: 5,
-        cat: 'ENTRADAS',
-        nombre: 'Empanaditas Típicas (x10)',
-        desc: 'Diez empanadas crocantes recién fritas acompañadas de guacamole casero y ají.',
-        precio: 16000,
-        img: './assets/img_2.jpg',
-        badge: 'Para Compartir'
+            "id": 5,
+            "cat": "CORTES",
+            "nombre": "Bife de Chorizo NY - Selección Chef (400g)",
+            "desc": "Corte noble madurado con borde dorado y centro tierno y jugoso. Clásico de los mejores asadores argentinos.",
+            "precio": 64000,
+            "img": "./assets/bife_de_chorizo.jpg",
+            "badge": "🥩 Corte Insignia"
       },
       {
-        id: 6,
-        cat: 'ENTRADAS',
-        nombre: 'Tostadas de Plátano con Carne Desmechada',
-        desc: 'Patacones crocantes con abundante carne sazonada al estilo criollo y guacamole.',
-        precio: 25000,
-        img: './assets/img_6.jpg',
-        badge: 'Delicioso'
+            "id": 6,
+            "cat": "CORTES",
+            "nombre": "Baby Beef al Carbón (350g)",
+            "desc": "Corte magro y delicado, extremadamente suave y sellado con mantequilla aromatizada de finas hierbas.",
+            "precio": 60000,
+            "img": "./assets/img_11.jpg",
+            "badge": "⭐ Ultra Tierno"
       },
       {
-        id: 7,
-        cat: 'BURGERS',
-        nombre: 'Hamburguesa Candombe Parrillera',
-        desc: '200g de carne 100% de res asada a la brasa, queso cheddar fundido, tocineta ahumada y papas.',
-        precio: 28000,
-        img: './assets/img_1.jpg',
-        badge: 'Burger Top'
+            "id": 7,
+            "cat": "CORTES",
+            "nombre": "Menú Res Parrillero Ejecutivo",
+            "desc": "Carne de res tierna asada a la plancha/parrilla, servida con arroz, frijoles caseros, ensalada y papas.",
+            "precio": 22000,
+            "img": "./assets/bife_de_chorizo.jpg",
+            "badge": "🍽️ Almuerzo Campestre"
       },
       {
-        id: 8,
-        cat: 'BURGERS',
-        nombre: 'Hamburguesa Campestre BBQ',
-        desc: 'Carne al carbón, aros de cebolla crocantes, salsa BBQ ahumada, queso y papas.',
-        precio: 26000,
-        img: './assets/img_7.jpg',
-        badge: 'Nueva'
+            "id": 8,
+            "cat": "CORTES",
+            "nombre": "Menú Cerdo Parrillero Ejecutivo",
+            "desc": "Costilla o chuleta de cerdo asada a la plancha, arroz blanco, frijoles caseros y ensalada.",
+            "precio": 22000,
+            "img": "./assets/chuleton_cerdo.jpg",
+            "badge": "🍽️ Almuerzo Campestre"
       },
       {
-        id: 9,
-        cat: 'BEBIDAS',
-        nombre: 'Cerveza Club Colombia Dorada / Roja',
-        desc: 'Bien fría para acompañar tu corte de carne favorito.',
-        precio: 8000,
-        img: './assets/img_4.jpg',
-        badge: 'Bebida'
+            "id": 9,
+            "cat": "CORTES",
+            "nombre": "Menú Pollo Parrillero Ejecutivo",
+            "desc": "Pechuga a la plancha acompañada de arroz, frijoles de la abuela, ensalada fresca y papas.",
+            "precio": 22000,
+            "img": "./assets/img_11.jpg",
+            "badge": "🍽️ Almuerzo Campestre"
       },
       {
-        id: 10,
-        cat: 'BEBIDAS',
-        nombre: 'Limonada de Coco Candombe',
-        desc: 'Refrescante limonada frappé cremosa con coco natural.',
-        precio: 12000,
-        img: './assets/img_12.jpg',
-        badge: 'Favorita'
+            "id": 19,
+            "cat": "CERDO_POLLO",
+            "nombre": "Gran Banquete Candombe (4 Pers.)",
+            "desc": "Bife de chorizo (400g), costillas BBQ, chorizo artesanal, morcilla crocante, papas rústicas y plátano maduro al gratín.",
+            "precio": 110000,
+            "img": "./assets/picada_candombe.jpg",
+            "badge": "👨‍👩‍👦 Para 4 Personas"
+      },
+      {
+            "id": 20,
+            "cat": "CERDO_POLLO",
+            "nombre": "Gran Picada Mixta Candombe (4 Pers.)",
+            "desc": "Carne de res, pechuga de pollo, chicharrón crocante, chorizo parrillero, morcilla, papas en casco, arepitas y ají casero.",
+            "precio": 75000,
+            "img": "./assets/picada_candombe.jpg",
+            "badge": "👨‍👩‍👦 La Reina de la Mesa"
+      },
+      {
+            "id": 21,
+            "cat": "CERDO_POLLO",
+            "nombre": "Media Picada Mixta (2 Pers.)",
+            "desc": "Combinación perfecta de res, cerdo, chorizo, morcilla, papas criollas y yuquitas para dos comensales.",
+            "precio": 42000,
+            "img": "./assets/picada_candombe.jpg",
+            "badge": "⭐ Para 2 Personas"
+      },
+      {
+            "id": 22,
+            "cat": "CERDO_POLLO",
+            "nombre": "Picada Tradicional de la Hacienda",
+            "desc": "Surtido abundante de cortes a la parrilla, plátano maduro al gratín, chicharrón y aderezo de chimichurri.",
+            "precio": 75000,
+            "img": "./assets/picada_candombe.jpg",
+            "badge": "🔥 Clásica Campestre"
+      },
+      {
+            "id": 23,
+            "cat": "CERDO_POLLO",
+            "nombre": "Bandeja Paisa Candombe (Don Rubén)",
+            "desc": "Frijoles caseros de la abuela, carne molida especial, chicharrón crocante 70g, huevo frito, chorizo, tajada de plátano, arepa y arroz.",
+            "precio": 35000,
+            "img": "./assets/bandeja_paisa.jpg",
+            "badge": "⭐ Tradición de la Casa"
+      },
+      {
+            "id": 24,
+            "cat": "CERDO_POLLO",
+            "nombre": "Chuletón de Cerdo Parrillero (450g)",
+            "desc": "Generoso chuletón de cerdo bañado con adobo de la casa y asado a fuego vivo. Jugoso y crocante.",
+            "precio": 46500,
+            "img": "./assets/chuleton_cerdo.jpg",
+            "badge": "🍖 Chuletón al Fuego"
+      },
+      {
+            "id": 25,
+            "cat": "CERDO_POLLO",
+            "nombre": "Chicharrón Criollo Crocante (300g)",
+            "desc": "Panceta de cerdo seleccionada con piel extratoastada en leña, servido con yuquitas y limón mandarino.",
+            "precio": 32000,
+            "img": "./assets/chicharron_crocante.jpg",
+            "badge": "🔥 Crocante Gourmet"
+      },
+      {
+            "id": 26,
+            "cat": "CERDO_POLLO",
+            "nombre": "Solomillo de Cerdo a la Pimienta (350g)",
+            "desc": "Medallones tiernos de solomillo bañados en suave salsa demi-glace de pimienta verde y crema.",
+            "precio": 53000,
+            "img": "./assets/chuleton_cerdo.jpg",
+            "badge": "⭐ Salsa Cremosa"
+      },
+      {
+            "id": 27,
+            "cat": "CERDO_POLLO",
+            "nombre": "Medallones de Cerdo al Carbón",
+            "desc": "Medallones marinados con romero y ajo asados a punto con guarnición de papas rústicas.",
+            "precio": 44000,
+            "img": "./assets/chuleton_cerdo.jpg",
+            "badge": "🍖 Suaves y Jugosos"
+      },
+      {
+            "id": 28,
+            "cat": "CERDO_POLLO",
+            "nombre": "Filete de Pollo a la Plancha (350g)",
+            "desc": "Pechuga tierna y jugosa marinada con cítricos y finas hierbas, dorada a fuego medio.",
+            "precio": 42000,
+            "img": "./assets/img_11.jpg",
+            "badge": "🍗 Ligero y Saludable"
+      },
+      {
+            "id": 29,
+            "cat": "ENTRADAS",
+            "nombre": "Empanaditas de Carne Mechada (x10)",
+            "desc": "Diez empanaditas recién fritas rellenas de carne mechada sazonada, acompañadas de guacamole y ají pique.",
+            "precio": 16000,
+            "img": "./assets/empanadas_mechada.jpg",
+            "badge": "🥟 10 Unidades Crocantes"
+      },
+      {
+            "id": 30,
+            "cat": "ENTRADAS",
+            "nombre": "Rellenas Artesanales Campesinas (Morcilla)",
+            "desc": "Morcilla suave y aliñada al estilo tradicional vallecaucano con trocitos de papa y poleo, dorada a la brasa.",
+            "precio": 20000,
+            "img": "./assets/morcilla_rellena.jpg",
+            "badge": "🌭 Morcilla Artesanal"
+      },
+      {
+            "id": 31,
+            "cat": "ENTRADAS",
+            "nombre": "Chorizo Criollo Parrillero de la Casa (80g)",
+            "desc": "Chorizo artesanal hecho con pulpa de cerdo aliñada con hierbas campesinas, dorado al carbón con arepitas.",
+            "precio": 12000,
+            "img": "./assets/choripan_artesanal.jpg",
+            "badge": "🔥 100% Cerdo Magro"
+      },
+      {
+            "id": 32,
+            "cat": "ENTRADAS",
+            "nombre": "Tostadas de Plátano con Carne Desmechada",
+            "desc": "Patacones gigantes crocantes montados con carne desmechada jugosa, hogao casero y guacamole fresco.",
+            "precio": 25000,
+            "img": "./assets/picada_candombe.jpg",
+            "badge": "🍌 Patacón Criollo"
+      },
+      {
+            "id": 33,
+            "cat": "ENTRADAS",
+            "nombre": "Tostadas de Plátano con Hogao (x4)",
+            "desc": "Cuatro patacones crocantes recién salidos de pailas, con hogao tradicional de tomate milano y cebolla.",
+            "precio": 15000,
+            "img": "./assets/picada_candombe.jpg",
+            "badge": "🥑 Crujientes"
+      },
+      {
+            "id": 34,
+            "cat": "ENTRADAS",
+            "nombre": "Arepa de Queso con Carne Desmechada",
+            "desc": "Arepa de maíz tierno asada a la parrilla cubierta con abundante carne desmechada sazonada y queso derretido.",
+            "precio": 15000,
+            "img": "./assets/bandeja_paisa.jpg",
+            "badge": "🧀 Arepa Montada"
+      },
+      {
+            "id": 35,
+            "cat": "ENTRADAS",
+            "nombre": "Menú Infantil Candombe Kids",
+            "desc": "Trocitos de filete de pollo o mini burger suave, abundante papa a la francesa y juguito Hit en cajita.",
+            "precio": 18000,
+            "img": "./assets/img_2.jpg",
+            "badge": "👶 Para los Niños"
+      },
+      {
+            "id": 36,
+            "cat": "ENTRADAS",
+            "nombre": "Tortilla de Papa Española con Atún",
+            "desc": "Tortilla gruesa española de papas pochadas, huevo campesino, cebolla confitada y trozos de atún.",
+            "precio": 20000,
+            "img": "./assets/tortilla_papa.jpg",
+            "badge": "🍳 Receta Clásica"
+      },
+      {
+            "id": 37,
+            "cat": "ENTRADAS",
+            "nombre": "Tortilla de Papa Tradicional Española",
+            "desc": "Clásica tortilla de papas y cebolla al sartén, jugosa por dentro y dorada por fuera.",
+            "precio": 17000,
+            "img": "./assets/tortilla_papa.jpg",
+            "badge": "🍳 Española"
+      },
+      {
+            "id": 38,
+            "cat": "ENTRADAS",
+            "nombre": "Papas en Casco Rústicas de la Casa",
+            "desc": "Papas cortadas en gajos gruesos con cáscara, condimentadas con sal marina, romero y paprika.",
+            "precio": 8000,
+            "img": "./assets/papas_francesas.jpg",
+            "badge": "🥔 Sazonadas con Romero"
+      },
+      {
+            "id": 39,
+            "cat": "ENTRADAS",
+            "nombre": "Papas a la Francesa Crujientes",
+            "desc": "Papas bastón crujientes por fuera y suaves por dentro, servidas con sal y salsas.",
+            "precio": 7000,
+            "img": "./assets/papas_francesas.jpg",
+            "badge": "🍟 Porción Dorada"
+      },
+      {
+            "id": 40,
+            "cat": "ENTRADAS",
+            "nombre": "Yuca Frita al Ajillo Criollo",
+            "desc": "Bastones de yuca cocida y dorada a la perfección con mantequilla de ajo.",
+            "precio": 8000,
+            "img": "./assets/papas_francesas.jpg",
+            "badge": "🌱 Yuca Dorada"
+      },
+      {
+            "id": 41,
+            "cat": "ENTRADAS",
+            "nombre": "Porción Frijoles Caseros de la Abuela",
+            "desc": "Cazuelita de frijoles rojos cocinados con garra y aliños tradicionales.",
+            "precio": 1500,
+            "img": "./assets/bandeja_paisa.jpg",
+            "badge": "🍲 Caseros"
+      },
+      {
+            "id": 42,
+            "cat": "ENTRADAS",
+            "nombre": "Porción de Ensalada Fresca de la Huerta",
+            "desc": "Mix de lechuga fresca, tomate milano maduro, cebolla morada y vinagreta de limón.",
+            "precio": 4000,
+            "img": "./assets/img_11.jpg",
+            "badge": "🥗 Fresca"
+      },
+      {
+            "id": 43,
+            "cat": "ENTRADAS",
+            "nombre": "Arepa de Maíz Blanco sin Sal",
+            "desc": "Arepa pura de maíz blanco asada al carbón.",
+            "precio": 2000,
+            "img": "./assets/bandeja_paisa.jpg",
+            "badge": "🌽 Saludable"
+      },
+      {
+            "id": 44,
+            "cat": "ENTRADAS",
+            "nombre": "Adición Carne de Hamburguesa (140g)",
+            "desc": "Porción adicional de carne 100% de res asada a la parrilla.",
+            "precio": 12000,
+            "img": "./assets/img_1.jpg",
+            "badge": "🥩 Carne Extra"
+      },
+      {
+            "id": 45,
+            "cat": "ENTRADAS",
+            "nombre": "Adición Tocineta Ahumada Doble",
+            "desc": "Tiras doradas y crocantes de tocineta ahumada.",
+            "precio": 3500,
+            "img": "./assets/tocineta_crispy.jpg",
+            "badge": "🥓 Tocineta Crispy"
+      },
+      {
+            "id": 46,
+            "cat": "ENTRADAS",
+            "nombre": "Adición Queso Cheddar o Mozzarella",
+            "desc": "Loncha generosa de queso fundido.",
+            "precio": 3000,
+            "img": "./assets/img_2.jpg",
+            "badge": "🧀 Queso Fundido"
+      },
+      {
+            "id": 47,
+            "cat": "ENTRADAS",
+            "nombre": "Adición Huevo Frito al Término",
+            "desc": "Huevo frito con yema tierna preparado al instante.",
+            "precio": 2000,
+            "img": "./assets/bandeja_paisa.jpg",
+            "badge": "🍳 Huevo Campesino"
+      },
+      {
+            "id": 10,
+            "cat": "BURGERS",
+            "nombre": "Cheese Burger (140g)",
+            "desc": "Carne 140g brasa, pan brioche artesanal, doble queso cheddar fundido, tocineta crispy, tomate, lechuga y papas a la francesa.",
+            "precio": 26000,
+            "img": "./assets/img_2.jpg",
+            "badge": "🔥 La Más Pedida"
+      },
+      {
+            "id": 11,
+            "cat": "BURGERS",
+            "nombre": "Hamburguesa La Candombe (180g Angus)",
+            "desc": "Carne 180g Angus seleccionada, pan brioche, tocineta doble, queso cheddar americano, huevo frito al término, tomate, lechuga y papas en casco.",
+            "precio": 31500,
+            "img": "./assets/img_1.jpg",
+            "badge": "⭐ Especialidad de la Casa"
+      },
+      {
+            "id": 12,
+            "cat": "BURGERS",
+            "nombre": "Home Cheese Burger (140g)",
+            "desc": "Carne 140g asada a la parrilla, pan brioche, queso mozzarella campesino derretido, tocineta ahumada, cebolla caramelizada y papas.",
+            "precio": 28000,
+            "img": "./assets/img_2.jpg",
+            "badge": "🧀 Queso Mozzarella"
+      },
+      {
+            "id": 13,
+            "cat": "BURGERS",
+            "nombre": "Cheeseburger Holandesa (140g)",
+            "desc": "Carne 140g artesanal a las brasas, queso gouda holandés derretido, tocineta crocante, salsa tártara de la casa y papas.",
+            "precio": 28000,
+            "img": "./assets/img_2.jpg",
+            "badge": "🧀 Salsa Especial"
+      },
+      {
+            "id": 14,
+            "cat": "BURGERS",
+            "nombre": "Choripán Artesanal Candombe",
+            "desc": "Chorizo parrillero artesanal de la casa en pan ciabatta crocante, chimichurri criollo, lechuga fresca, tomate y papas.",
+            "precio": 21500,
+            "img": "./assets/choripan_artesanal.jpg",
+            "badge": "🔥 Tradición Argentina"
+      },
+      {
+            "id": 15,
+            "cat": "BURGERS",
+            "nombre": "Mega Candombe Doble Carne (280g)",
+            "desc": "Doble carne de 140g (280g total), doble queso cheddar fundido, triple tocineta, huevo frito, cebolla caramelizada y papas en casco.",
+            "precio": 42000,
+            "img": "./assets/img_1.jpg",
+            "badge": "👑 Para Gigantes"
+      },
+      {
+            "id": 16,
+            "cat": "BURGERS",
+            "nombre": "Mega Combo Candombe Parrillero",
+            "desc": "Hamburguesa La Candombe (180g) + papas en casco rústicas + cerveza Club Colombia Dorada o gaseosa bien fría.",
+            "precio": 45000,
+            "img": "./assets/img_1.jpg",
+            "badge": "🍔+🍟+🍺 Combo Completo"
+      },
+      {
+            "id": 17,
+            "cat": "BURGERS",
+            "nombre": "Dúo Candombe para Pareja",
+            "desc": "Dos Cheese Burgers (140g c/u) con papas a la francesa dobles para compartir en mesa.",
+            "precio": 50000,
+            "img": "./assets/img_2.jpg",
+            "badge": "👫 Para 2 Personas"
+      },
+      {
+            "id": 18,
+            "cat": "BURGERS",
+            "nombre": "Cheeseburger Clásica Sencilla",
+            "desc": "Carne 120g asada al carbón, queso cheddar, vegetales frescos y papas.",
+            "precio": 23000,
+            "img": "./assets/img_2.jpg",
+            "badge": "🍔 Clásica"
+      },
+      {
+            "id": 48,
+            "cat": "BEBIDAS",
+            "nombre": "Club Colombia Dorada",
+            "desc": "Cerveza Club Colombia Dorada servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 7000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 49,
+            "cat": "BEBIDAS",
+            "nombre": "Michelado",
+            "desc": "Vaso escarchado con limón fresco y sal marina parrillera.",
+            "precio": 7000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 50,
+            "cat": "BEBIDAS",
+            "nombre": "Coca Cola",
+            "desc": "Coca Cola servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 51,
+            "cat": "BEBIDAS",
+            "nombre": "Coca Cola Zero",
+            "desc": "Coca Cola Zero servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 52,
+            "cat": "BEBIDAS",
+            "nombre": "Corona",
+            "desc": "Cerveza Corona servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 9000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 53,
+            "cat": "BEBIDAS",
+            "nombre": "Soda",
+            "desc": "Soda servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 54,
+            "cat": "BEBIDAS",
+            "nombre": "Stella Artois",
+            "desc": "Cerveza Stella Artois servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 9000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 55,
+            "cat": "BEBIDAS",
+            "nombre": "Limonada",
+            "desc": "Limonada recién exprimida con hielo frappé y toque de panela orgánica.",
+            "precio": 8000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍋 Natural Frío"
+      },
+      {
+            "id": 56,
+            "cat": "BEBIDAS",
+            "nombre": "Águila Light",
+            "desc": "Cerveza Aguila Light servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 7000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 57,
+            "cat": "BEBIDAS",
+            "nombre": "Canada Dry",
+            "desc": "Canada Dry servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 58,
+            "cat": "BEBIDAS",
+            "nombre": "Agua",
+            "desc": "Agua purificada y fresca en botella.",
+            "precio": 5000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 59,
+            "cat": "BEBIDAS",
+            "nombre": "Poker",
+            "desc": "Cerveza Poker servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 7000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 60,
+            "cat": "BEBIDAS",
+            "nombre": "Heineken",
+            "desc": "Cerveza Heineken servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 9000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 61,
+            "cat": "BEBIDAS",
+            "nombre": "Coca Cola Zero 1.5L",
+            "desc": "Coca Cola Zero 1.5L servida con hielo y rodaja de limón.",
+            "precio": 14000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 62,
+            "cat": "BEBIDAS",
+            "nombre": "Agua Con Gas",
+            "desc": "Agua Con Gas purificada y fresca en botella.",
+            "precio": 15000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 63,
+            "cat": "BEBIDAS",
+            "nombre": "Costeña",
+            "desc": "Cerveza Costeña servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 7000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 64,
+            "cat": "BEBIDAS",
+            "nombre": "Vino Copa",
+            "desc": "Vino Copa de notas frutales y cuerpo redondo, maridaje ideal para carne de res.",
+            "precio": 20000,
+            "img": "./assets/img_8.jpg",
+            "badge": "🍷 Vino de la Casa"
+      },
+      {
+            "id": 65,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo Hit Mango",
+            "desc": "Jugo Hit Mango bien frío en botella.",
+            "precio": 7000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 66,
+            "cat": "BEBIDAS",
+            "nombre": "Club Colombia Roja",
+            "desc": "Cerveza Club Colombia Roja servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 7000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 67,
+            "cat": "BEBIDAS",
+            "nombre": "Smirnoff Botella Pet",
+            "desc": "Trago de Smirnoff Botella Pet servido en las rocas o puro según tu preferencia.",
+            "precio": 16000,
+            "img": "./assets/img_8.jpg",
+            "badge": "🥃 Trago / Licor"
+      },
+      {
+            "id": 68,
+            "cat": "BEBIDAS",
+            "nombre": "Quatro",
+            "desc": "Quatro servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 69,
+            "cat": "BEBIDAS",
+            "nombre": "Corona Zero",
+            "desc": "Cerveza Corona Zero servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 10000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
+      },
+      {
+            "id": 70,
+            "cat": "BEBIDAS",
+            "nombre": "Sprite",
+            "desc": "Sprite servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 71,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo Natural Fresa",
+            "desc": "Jugo Natural Fresa preparado con fruta fresca seleccionada en agua bien fría.",
+            "precio": 9000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 72,
+            "cat": "BEBIDAS",
+            "nombre": "Colombiana Postobón",
+            "desc": "Colombiana Postobon servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 73,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo Hit Naranja Piña",
+            "desc": "Jugo Hit Naranja Piña bien frío en botella.",
+            "precio": 7000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 74,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo Hit Mora",
+            "desc": "Jugo Hit Mora bien frío en botella.",
+            "precio": 7000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 75,
+            "cat": "BEBIDAS",
+            "nombre": "Mister Tea Durazno",
+            "desc": "Mister Tea Durazno servida con hielo y rodaja de limón.",
+            "precio": 6000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 76,
+            "cat": "BEBIDAS",
+            "nombre": "Manzana Postobón",
+            "desc": "Manzana Postobon servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 77,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo Natural Mora",
+            "desc": "Jugo Natural Mora preparado con fruta fresca seleccionada en agua bien fría.",
+            "precio": 9000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 78,
+            "cat": "BEBIDAS",
+            "nombre": "Mister Tea Limon",
+            "desc": "Mister Tea Limon servida con hielo y rodaja de limón.",
+            "precio": 6000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 79,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo Natural Lulo",
+            "desc": "Jugo Natural Lulo preparado con fruta fresca seleccionada en agua bien fría.",
+            "precio": 9000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 80,
+            "cat": "BEBIDAS",
+            "nombre": "Ron Puro Colombia Vaso",
+            "desc": "Trago de Ron Puro Colombia Vaso servido en las rocas o puro según tu preferencia.",
+            "precio": 10000,
+            "img": "./assets/img_8.jpg",
+            "badge": "🥃 Trago / Licor"
+      },
+      {
+            "id": 81,
+            "cat": "BEBIDAS",
+            "nombre": "Copa José Cuervo",
+            "desc": "Trago de Copa Jose Cuervo servido en las rocas o puro según tu preferencia.",
+            "precio": 25000,
+            "img": "./assets/img_8.jpg",
+            "badge": "🥃 Trago / Licor"
+      },
+      {
+            "id": 82,
+            "cat": "BEBIDAS",
+            "nombre": "Jp Chenet Lata",
+            "desc": "Jp Chenet Lata de notas frutales y cuerpo redondo, maridaje ideal para carne de res.",
+            "precio": 20000,
+            "img": "./assets/img_8.jpg",
+            "badge": "🥃 Trago / Licor"
+      },
+      {
+            "id": 83,
+            "cat": "BEBIDAS",
+            "nombre": "Coca Cola Litro",
+            "desc": "Coca Cola Litro servida con hielo y rodaja de limón.",
+            "precio": 10000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 84,
+            "cat": "BEBIDAS",
+            "nombre": "Tinto De Verano",
+            "desc": "Tinto De Verano de notas frutales y cuerpo redondo, maridaje ideal para carne de res.",
+            "precio": 18000,
+            "img": "./assets/img_8.jpg",
+            "badge": "🍷 Vino de la Casa"
+      },
+      {
+            "id": 85,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo En Leche Mora",
+            "desc": "Jugo En Leche Mora preparado con pulpa 100% natural y leche entera fresca y cremosa.",
+            "precio": 11000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🥛 Batido Cremoso"
+      },
+      {
+            "id": 86,
+            "cat": "BEBIDAS",
+            "nombre": "Copa Olmeca",
+            "desc": "Trago de Copa Olmeca servido en las rocas o puro según tu preferencia.",
+            "precio": 26000,
+            "img": "./assets/img_8.jpg",
+            "badge": "🥃 Trago / Licor"
+      },
+      {
+            "id": 87,
+            "cat": "BEBIDAS",
+            "nombre": "Uva Postobón",
+            "desc": "Uva Postobón servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 88,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo En Leche De Fresa",
+            "desc": "Jugo En Leche De Fresa preparado con pulpa 100% natural y leche entera fresca y cremosa.",
+            "precio": 11000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🥛 Batido Cremoso"
+      },
+      {
+            "id": 89,
+            "cat": "BEBIDAS",
+            "nombre": "Jack Daniels",
+            "desc": "Trago de Jack Daniels servido en las rocas o puro según tu preferencia.",
+            "precio": 26000,
+            "img": "./assets/img_8.jpg",
+            "badge": "🥃 Trago / Licor"
+      },
+      {
+            "id": 90,
+            "cat": "BEBIDAS",
+            "nombre": "Pepsi",
+            "desc": "Pepsi servida con hielo y rodaja de limón.",
+            "precio": 7000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "🥤 Refresco Frío"
+      },
+      {
+            "id": 91,
+            "cat": "BEBIDAS",
+            "nombre": "Red Bull",
+            "desc": "Bebida energizante Red Bull original en lata fría.",
+            "precio": 10000,
+            "img": "./assets/gaseosa_cola.jpg",
+            "badge": "⚡ Energizante"
+      },
+      {
+            "id": 92,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo En Leche Lulo",
+            "desc": "Jugo En Leche Lulo preparado con pulpa 100% natural y leche entera fresca y cremosa.",
+            "precio": 11000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🥛 Batido Cremoso"
+      },
+      {
+            "id": 93,
+            "cat": "BEBIDAS",
+            "nombre": "Hit Cajita",
+            "desc": "Jugo Hit Hit Cajita bien frío en botella.",
+            "precio": 2500,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 94,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo Hit Frutos Tropicales",
+            "desc": "Jugo Hit Frutos Tropicales bien frío en botella.",
+            "precio": 5000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 95,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo Natural Mango",
+            "desc": "Jugo Natural Mango preparado con fruta fresca seleccionada en agua bien fría.",
+            "precio": 6000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🍓 Fruta Natural"
+      },
+      {
+            "id": 96,
+            "cat": "BEBIDAS",
+            "nombre": "Jugo En Leche De Mango",
+            "desc": "Jugo En Leche De Mango preparado con pulpa 100% natural y leche entera fresca y cremosa.",
+            "precio": 7000,
+            "img": "./assets/img_3.jpg",
+            "badge": "🥛 Batido Cremoso"
+      },
+      {
+            "id": 97,
+            "cat": "BEBIDAS",
+            "nombre": "Club Colombia Negra",
+            "desc": "Cerveza Club Colombia Negra servida a temperatura glaciar para acompañar tus cortes.",
+            "precio": 6000,
+            "img": "./assets/cerveza_jarra.jpg",
+            "badge": "🍺 Cerveza Helada"
       }
-    ];
+];
 
     let currentCat = 'TODOS';
     let currentSearch = '';
