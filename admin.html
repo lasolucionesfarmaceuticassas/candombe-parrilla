@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-[#0a0a0c] text-slate-100 antialiased selection:bg-orange-500 selection:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candombe Parrilla • Panel de Control de Carta (Admin)</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0a0a0c',
+              card: '#121217',
+              border: '#23232b',
+              orange: '#EA580C',
+              amber: '#D97706',
+              gold: '#F59E0B'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0c; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
+
+    /* Switch Toggle Styles */
+    .switch-toggle {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 24px;
+    }
+    .switch-toggle input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ef4444; transition: .3s; border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+      background-color: white; transition: .3s; border-radius: 50%;
+    }
+    input:checked + .slider { background-color: #22c55e; }
+    input:checked + .slider:before { transform: translateX(24px); }
+  </style>
+</head>
+<body class="min-h-full flex flex-col font-sans text-slate-200">
+
+  <!-- TOP BAR -->
+  <header class="bg-[#121216] border-b border-zinc-800 sticky top-0 z-40 px-4 lg:px-8 py-3 shadow-xl">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white text-xl shadow-lg shadow-orange-950/50">
+          <i class="fa-solid fa-fire-burner"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-bold text-lg text-white tracking-wide">CANDOMBE PARRILLA</h1>
+            <span class="bg-orange-500/20 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded border border-orange-500/30">ADMIN CARTA</span>
+          </div>
+          <p class="text-xs text-zinc-400">Control total en tiempo real: activa/pausa platos, edita precios y adiós a Menüpp.</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <a href="./index.html" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs font-bold text-zinc-200 border border-zinc-700 flex items-center gap-1.5 transition-colors shadow">
+          <i class="fa-solid fa-eye text-amber-400"></i> Ver Carta Cliente
+        </a>
+
+        <button onclick="openNewDishModal()" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-xs font-bold text-white flex items-center gap-1.5 shadow-lg shadow-orange-900/40 transition-all">
+          <i class="fa-solid fa-plus"></i> + Nuevo Plato
+        </button>
+
+        <button onclick="saveAllChanges(true)" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white flex items-center gap-1.5 shadow transition-colors">
+          <i class="fa-solid fa-floppy-disk"></i> Guardar Todo
+        </button>
+
+        <button onclick="exportCatalogJson()" title="Descargar respaldo JSON de la carta" class="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-xs text-zinc-400 border border-zinc-800">
+          <i class="fa-solid fa-download"></i>
+        </button>
+
+        <button onclick="resetToDefaultCatalog()" title="Restablecer a carta original" class="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-red-950 text-xs text-zinc-400 hover:text-red-400 border border-zinc-800">
+          <i class="fa-solid fa-rotate-left"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 lg:p-8 space-y-6">
+
+    <!-- STATUS & STATS BANNER -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4">
+      <div class="bg-brand-card rounded-xl p-4 border border-zinc-800">
+        <div class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider">Total Productos</div>
+        <div class="text-2xl font-extrabold text-white mt-1" id="stat-total">97</div>
+        <div class="text-[11px] text-zinc-500 mt-0.5">En las 5 categorías oficiales</div>
+      </div>
+
+      <div class="bg-brand-card rounded-xl p-4 border border-zinc-800">
+        <div class="text-[11px] font-bold text-emerald-400 uppercase tracking-wider">Disponibles en Mesa</div>
+        <div class="text-2xl font-extrabold text-emerald-400 mt-1" id="stat-available">97</div>
+        <div class="text-[11px] text-zinc-500 mt-0.5">Los comensales pueden pedir</div>
+      </div>
+
+      <div class="bg-brand-card rounded-xl p-4 border border-zinc-800">
+        <div class="text-[11px] font-bold text-red-400 uppercase tracking-wider">Agotados Hoy</div>
+        <div class="text-2xl font-extrabold text-red-400 mt-1" id="stat-out">0</div>
+        <div class="text-[11px] text-zinc-500 mt-0.5" id="stat-out-desc">Cero platos pausados</div>
+      </div>
+
+      <div class="bg-brand-card rounded-xl p-4 border border-zinc-800">
+        <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider">Ahorro vs Menüpp</div>
+        <div class="text-2xl font-extrabold text-amber-400 mt-1">$250.000 / mes</div>
+        <div class="text-[11px] text-zinc-500 mt-0.5">$3.000.000 COP al año libres</div>
+      </div>
+    </div>
+
+    <!-- FILTER & SEARCH BAR -->
+    <div class="bg-brand-card rounded-2xl p-4 border border-zinc-800 space-y-3 shadow-lg">
+      
+      <!-- Category Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1" id="catPillsContainer">
+        <button onclick="setCategoryFilter('all', this)" class="cat-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-orange-600 text-white shadow">
+          Todos (<span id="count-all">97</span>)
+        </button>
+        <button onclick="setCategoryFilter('cortes', this)" class="cat-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-zinc-800 text-zinc-300 hover:bg-zinc-700">
+          🥩 Cortes al Carbón (<span id="count-cortes">9</span>)
+        </button>
+        <button onclick="setCategoryFilter('compartir', this)" class="cat-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-zinc-800 text-zinc-300 hover:bg-zinc-700">
+          👥 Para Compartir (<span id="count-compartir">10</span>)
+        </button>
+        <button onclick="setCategoryFilter('entradas', this)" class="cat-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-zinc-800 text-zinc-300 hover:bg-zinc-700">
+          🥟 Entradas & Picadas (<span id="count-entradas">19</span>)
+        </button>
+        <button onclick="setCategoryFilter('burgers', this)" class="cat-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-zinc-800 text-zinc-300 hover:bg-zinc-700">
+          🍔 Hamburguesas (<span id="count-burgers">9</span>)
+        </button>
+        <button onclick="setCategoryFilter('bebidas', this)" class="cat-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-zinc-800 text-zinc-300 hover:bg-zinc-700">
+          🍺 Bebidas & Cervezas (<span id="count-bebidas">50</span>)
+        </button>
+      </div>
+
+      <!-- Search & Availability Status Filter -->
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        <div class="relative flex-1 w-full">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 text-sm"></i>
+          <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Buscar plato por nombre, descripción o código..." class="w-full bg-[#18181f] border border-zinc-700 rounded-xl pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+        </div>
+
+        <div class="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+          <span class="text-xs text-zinc-400 font-semibold">Mostrar:</span>
+          <select id="statusFilter" onchange="handleSearch()" class="bg-[#18181f] border border-zinc-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500">
+            <option value="all">Todos los estados</option>
+            <option value="available">🟢 Solo Disponibles</option>
+            <option value="out">🔴 Solo Agotados</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PRODUCT LIST / GRID -->
+    <div id="dishesList" class="space-y-3">
+      <!-- Generated via JS -->
+    </div>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 bg-zinc-900 border border-emerald-500/50 text-emerald-400 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <i class="fa-solid fa-circle-check text-lg"></i>
+    <div>
+      <div class="text-xs font-bold text-white" id="toastTitle">Cambio guardado</div>
+      <div class="text-[11px] text-zinc-400" id="toastMessage">La carta digital se actualizó en vivo.</div>
+    </div>
+  </div>
+
+  <!-- MODAL: AGREGAR NUEVO PLATO -->
+  <div id="newDishModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-[#14141a] border border-zinc-700 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl overflow-y-auto max-h-[90vh]">
+      
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-utensils text-orange-500"></i> Agregar Nuevo Plato a la Carta
+        </h3>
+        <button onclick="closeNewDishModal()" class="text-zinc-500 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Nombre del Plato o Bebida</label>
+          <input type="text" id="modalDishName" placeholder="Ej: Tomahawk Angus a la Brasa (800g)" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Categoría</label>
+            <select id="modalDishCategory" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+              <option value="cortes">🥩 Cortes al Carbón</option>
+              <option value="compartir">👥 Para Compartir</option>
+              <option value="entradas">🥟 Entradas & Picadas</option>
+              <option value="burgers">🍔 Hamburguesas</option>
+              <option value="bebidas">🍺 Bebidas & Cervezas</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Precio Venta (COP)</label>
+            <input type="number" id="modalDishPrice" placeholder="68000" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Etiqueta / Badge (Opcional)</label>
+          <input type="text" id="modalDishBadge" placeholder="Ej: 🔥 Especialidad del Asador" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Descripción del Plato</label>
+          <textarea id="modalDishDesc" rows="2" placeholder="Detalle de ingredientes, acompañamientos incluidos y preparación..." class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-zinc-400 uppercase mb-1">Foto del Plato</label>
+          <select id="modalDishPhotoSelect" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mb-2" onchange="previewSelectedPhoto(this.value)">
+            <option value="./assets/bife_de_chorizo.jpg">Bife de Chorizo a la Brasa</option>
+            <option value="./assets/punta_anca_grill.jpg">Picanha / Punta de Anca</option>
+            <option value="./assets/steak_charcoal.jpg">Medallón de Res al Término</option>
+            <option value="./assets/baby_beef.jpg">Baby Beef Tierno</option>
+            <option value="./assets/chuleton_cerdo.jpg">Chuletón de Cerdo</option>
+            <option value="./assets/pollo_parrilla.jpg">Pollo a la Parrilla</option>
+            <option value="./assets/chicharron_crocante.jpg">Chicharrón Crocante</option>
+            <option value="./assets/picada_candombe.jpg">Gran Picada Banquete</option>
+            <option value="./assets/bandeja_paisa.jpg">Bandeja Paisa</option>
+            <option value="./assets/choripan_artesanal.jpg">Choripán Artesanal</option>
+            <option value="./assets/empanadas_mechada.jpg">Empanaditas de Carne</option>
+            <option value="./assets/morcilla_rellena.jpg">Morcilla Campesina</option>
+            <option value="./assets/tortilla_papa.jpg">Tortilla de Papa</option>
+            <option value="./assets/papas_francesas.jpg">Papas Francesas Crujientes</option>
+            <option value="./assets/tocineta_crispy.jpg">Tocineta Crujiente</option>
+            <option value="./assets/ensalada_fresca.jpg">Ensalada de la Huerta</option>
+            <option value="./assets/img_1.jpg">Hamburguesa La Candombe</option>
+            <option value="./assets/img_7.jpg">Hamburguesa con Queso Cheddar</option>
+            <option value="./assets/limonada_natural.jpg">Limonada Fría con Menta</option>
+            <option value="./assets/cerveza_jarra.jpg">Cerveza Jarra Helada</option>
+            <option value="./assets/cerveza_negra_stout.jpg">Cerveza Stella Copa</option>
+            <option value="./assets/cerveza_corona.jpg">Cerveza Corona</option>
+            <option value="./assets/soda_sprite_limon.jpg">Soda / Canada Dry con Limón</option>
+            <option value="./assets/gaseosa_cola.jpg">Gaseosa Cola con Hielo</option>
+            <option value="./assets/jugo_mango.jpg">Jugo de Mango Natural</option>
+            <option value="./assets/jugo_fresa.jpg">Jugo de Frutos Rojos</option>
+            <option value="./assets/copa_vino.jpg">Copa de Vino Tinto</option>
+            <option value="./assets/whiskey_trago.jpg">Jack Daniel's en las Rocas</option>
+            <option value="./assets/tequila_shot.jpg">Coctel / Trago Especial</option>
+          </select>
+          <div class="w-full h-28 rounded-xl overflow-hidden bg-black/50 border border-zinc-800 flex items-center justify-center">
+            <img id="photoPreviewImg" src="./assets/bife_de_chorizo.jpg" class="h-full w-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-3 border-t border-zinc-800 pt-3">
+        <button onclick="closeNewDishModal()" class="px-4 py-2 rounded-xl text-xs font-bold text-zinc-400 hover:text-white hover:bg-zinc-800">
+          Cancelar
+        </button>
+        <button onclick="saveNewDish()" class="px-5 py-2 rounded-xl text-xs font-bold bg-orange-600 hover:bg-orange-500 text-white shadow-lg shadow-orange-950/50">
+          Guardar y Publicar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT DE GESTIÓN Y PERSISTENCIA -->
+  <script>
+    // Catálogo maestro por defecto
+    const DEFAULT_CATALOG = {
+      // Será inyectado con los 97 platos oficiales
+    };
+  </script>
+
+  <script src="./catalog_master.js"></script>
+
+  <script>
+    // Inicialización de datos
+    let catalog = {};
+    let currentCategory = 'all';
+    let currentSearch = '';
+    let currentStatus = 'all';
+
+    function initCatalog() {
+      try {
+        const stored = localStorage.getItem('candombe_parrilla_catalog');
+        if (stored) {
+          catalog = JSON.parse(stored);
+        } else if (typeof MASTER_CATALOG !== 'undefined') {
+          catalog = JSON.parse(JSON.stringify(MASTER_CATALOG));
+          localStorage.setItem('candombe_parrilla_catalog', JSON.stringify(catalog));
+        }
+      } catch (e) {
+        console.error('Error loading catalog:', e);
+        if (typeof MASTER_CATALOG !== 'undefined') {
+          catalog = JSON.parse(JSON.stringify(MASTER_CATALOG));
+        }
+      }
+
+      // Asegurar que cada ítem tenga available por defecto en true
+      for (const [catKey, items] of Object.entries(catalog)) {
+        items.forEach(item => {
+          if (item.available === undefined) item.available = true;
+        });
+      }
+
+      updateStats();
+      renderDishes();
+    }
+
+    // Actualizar contadores y estadísticas
+    function updateStats() {
+      let total = 0;
+      let available = 0;
+      let out = 0;
+
+      const counts = { cortes: 0, compartir: 0, entradas: 0, burgers: 0, bebidas: 0 };
+
+      for (const [catKey, items] of Object.entries(catalog)) {
+        counts[catKey] = items.length;
+        items.forEach(item => {
+          total++;
+          if (item.available !== false) available++;
+          else out++;
+        });
+      }
+
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-available').textContent = available;
+      document.getElementById('stat-out').textContent = out;
+      document.getElementById('count-all').textContent = total;
+
+      for (const [k, v] of Object.entries(counts)) {
+        const el = document.getElementById(`count-${k}`);
+        if (el) el.textContent = v;
+      }
+
+      const outDesc = document.getElementById('stat-out-desc');
+      if (out > 0) {
+        outDesc.textContent = `${out} plato(s) pausado(s) por agotado`;
+        outDesc.className = 'text-[11px] text-red-400 font-bold mt-0.5';
+      } else {
+        outDesc.textContent = 'Cero platos pausados';
+        outDesc.className = 'text-[11px] text-zinc-500 mt-0.5';
+      }
+    }
+
+    // Renderizar lista de platos
+    function renderDishes() {
+      const container = document.getElementById('dishesList');
+      if (!container) return;
+
+      let allDishes = [];
+      for (const [catKey, items] of Object.entries(catalog)) {
+        items.forEach(item => {
+          allDishes.push({ ...item, categoryKey: catKey });
+        });
+      }
+
+      // Filtrar por categoría
+      if (currentCategory !== 'all') {
+        allDishes = allDishes.filter(d => d.categoryKey === currentCategory);
+      }
+
+      // Filtrar por estado
+      if (currentStatus === 'available') {
+        allDishes = allDishes.filter(d => d.available !== false);
+      } else if (currentStatus === 'out') {
+        allDishes = allDishes.filter(d => d.available === false);
+      }
+
+      // Filtrar por búsqueda
+      if (currentSearch) {
+        const q = currentSearch.toLowerCase();
+        allDishes = allDishes.filter(d => 
+          d.name.toLowerCase().includes(q) || 
+          (d.desc && d.desc.toLowerCase().includes(q)) || 
+          (d.badge && d.badge.toLowerCase().includes(q))
+        );
+      }
+
+      if (allDishes.length === 0) {
+        container.innerHTML = `
+          <div class="bg-brand-card rounded-2xl p-8 border border-zinc-800 text-center text-zinc-400 space-y-2">
+            <i class="fa-solid fa-box-open text-3xl text-zinc-600"></i>
+            <p class="font-bold text-sm text-zinc-300">No se encontraron platos con los filtros actuales.</p>
+            <p class="text-xs text-zinc-500">Prueba cambiando la categoría o borrando el término de búsqueda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = allDishes.map(d => {
+        const isAvailable = d.available !== false;
+        const statusBorder = isAvailable ? 'border-zinc-800' : 'border-red-900/60 bg-red-950/10';
+        const badgeColor = isAvailable ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-red-500/20 text-red-400 border-red-500/30';
+        const statusText = isAvailable ? '🟢 DISPONIBLE' : '🔴 AGOTADO HOY';
+
+        return `
+          <div class="bg-brand-card rounded-2xl p-4 border ${statusBorder} flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all">
+            
+            <!-- Left: Image & Info -->
+            <div class="flex items-center gap-3.5 flex-1 min-w-0">
+              <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 bg-black/40 border border-zinc-800 relative">
+                <img src="${d.img}" alt="${d.name}" class="w-full h-full object-cover ${isAvailable ? '' : 'grayscale opacity-75'}">
+                ${!isAvailable ? '<div class="absolute inset-0 bg-red-950/60 flex items-center justify-center text-[9px] font-bold text-red-300">AGOTADO</div>' : ''}
+              </div>
+
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h4 class="font-bold text-sm md:text-base text-white truncate">${d.name}</h4>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded border ${badgeColor}">${statusText}</span>
+                  ${d.badge ? `<span class="text-[10px] bg-zinc-800 text-zinc-400 px-1.5 py-0.5 rounded font-mono">${d.badge}</span>` : ''}
+                </div>
+                <p class="text-xs text-zinc-400 line-clamp-1 mt-0.5">${d.desc || 'Sin descripción'}</p>
+                <div class="text-[11px] text-zinc-500 font-mono mt-1">Categoría: <span class="capitalize text-zinc-400">${d.categoryKey}</span></div>
+              </div>
+            </div>
+
+            <!-- Right: Controls (Price, Switch, Delete) -->
+            <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-zinc-800">
+              
+              <!-- Price Editor -->
+              <div class="flex items-center gap-1.5 bg-zinc-900 border border-zinc-700 rounded-xl px-2.5 py-1.5">
+                <span class="text-xs text-zinc-500 font-bold">$</span>
+                <input type="number" step="500" value="${d.price}" onchange="updatePrice('${d.categoryKey}', ${d.id}, this.value)" class="w-24 bg-transparent text-sm font-bold text-white focus:outline-none text-right">
+                <span class="text-[10px] text-zinc-500">COP</span>
+              </div>
+
+              <!-- Switch Toggle -->
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-bold ${isAvailable ? 'text-emerald-400' : 'text-red-400'}">
+                  ${isAvailable ? 'Activo' : 'Agotado'}
+                </span>
+                <label class="switch-toggle">
+                  <input type="checkbox" ${isAvailable ? 'checked' : ''} onchange="toggleDishAvailability('${d.categoryKey}', ${d.id}, this.checked)">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <!-- Delete/Hide Dish -->
+              <button onclick="deleteDish('${d.categoryKey}', ${d.id}, '${d.name}')" title="Ocultar o eliminar plato de la carta" class="w-8 h-8 rounded-lg bg-zinc-900 hover:bg-red-950 text-zinc-500 hover:text-red-400 border border-zinc-800 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-trash text-xs"></i>
+              </button>
+
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Cambiar disponibilidad (Agotado / Disponible)
+    function toggleDishAvailability(catKey, id, isAvailable) {
+      if (!catalog[catKey]) return;
+      const item = catalog[catKey].find(d => d.id === id);
+      if (!item) return;
+
+      item.available = isAvailable;
+      saveAllChanges(false);
+      updateStats();
+      renderDishes();
+
+      const statusMsg = isAvailable ? '🟢 Disponible para ordenar' : '🔴 Marcado como Agotado hoy';
+      showToast(`Plato actualizado`, `"${item.name}" ahora está ${statusMsg}.`);
+    }
+
+    // Actualizar precio
+    function updatePrice(catKey, id, newPrice) {
+      const p = parseFloat(newPrice);
+      if (isNaN(p) || p <= 0) return;
+
+      const item = catalog[catKey]?.find(d => d.id === id);
+      if (!item) return;
+
+      item.price = p;
+      saveAllChanges(false);
+      showToast('Precio actualizado', `"${item.name}" ahora cuesta $${p.toLocaleString('es-CO')} COP.`);
+    }
+
+    // Eliminar / Ocultar plato
+    function deleteDish(catKey, id, name) {
+      if (!confirm(`¿Estás seguro de quitar "${name}" de la carta digital de Candombe? Podrás volver a agregarlo cuando quieras.`)) {
+        return;
+      }
+
+      catalog[catKey] = catalog[catKey].filter(d => d.id !== id);
+      saveAllChanges(true);
+      updateStats();
+      renderDishes();
+      showToast('Plato retirado', `"${name}" fue retirado de la carta digital.`);
+    }
+
+    // Filtrar por categoría
+    function setCategoryFilter(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-filter-btn').forEach(b => {
+        b.className = 'cat-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-zinc-800 text-zinc-300 hover:bg-zinc-700';
+      });
+      if (btn) {
+        btn.className = 'cat-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-orange-600 text-white shadow';
+      }
+      renderDishes();
+    }
+
+    // Filtrar por búsqueda y estado
+    function handleSearch() {
+      currentSearch = document.getElementById('searchInput').value;
+      currentStatus = document.getElementById('statusFilter').value;
+      renderDishes();
+    }
+
+    // Guardar cambios en localStorage
+    function saveAllChanges(notify = true) {
+      try {
+        localStorage.setItem('candombe_parrilla_catalog', JSON.stringify(catalog));
+        localStorage.setItem('candombe_parrilla_updated', Date.now());
+        if (notify) {
+          showToast('Carta Sincronizada', 'Todos los cambios fueron guardados y ya están activos en el menú digital.');
+        }
+      } catch (e) {
+        console.error('Error saving to localStorage:', e);
+        alert('Error al guardar cambios.');
+      }
+    }
+
+    // Restablecer carta original
+    function resetToDefaultCatalog() {
+      if (!confirm('¿Deseas restablecer todos los productos y precios a la carta original de fábrica?')) {
+        return;
+      }
+      if (typeof MASTER_CATALOG !== 'undefined') {
+        catalog = JSON.parse(JSON.stringify(MASTER_CATALOG));
+        saveAllChanges(true);
+        updateStats();
+        renderDishes();
+        showToast('Carta restablecida', 'Se restauraron los 97 platos y precios originales.');
+      }
+    }
+
+    // Exportar catálogo en JSON
+    function exportCatalogJson() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(catalog, null, 2));
+      const a = document.createElement('a');
+      a.setAttribute("href", dataStr);
+      a.setAttribute("download", `carta_candombe_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    // Toast Notification Helper
+    function showToast(title, message) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMessage').textContent = message;
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    // Modales de nuevo plato
+    function openNewDishModal() {
+      document.getElementById('newDishModal').classList.remove('hidden');
+      document.getElementById('newDishModal').classList.add('flex');
+    }
+
+    function closeNewDishModal() {
+      document.getElementById('newDishModal').classList.add('hidden');
+      document.getElementById('newDishModal').classList.remove('flex');
+    }
+
+    function previewSelectedPhoto(url) {
+      document.getElementById('photoPreviewImg').src = url;
+    }
+
+    function saveNewDish() {
+      const name = document.getElementById('modalDishName').value.trim();
+      const cat = document.getElementById('modalDishCategory').value;
+      const price = parseFloat(document.getElementById('modalDishPrice').value);
+      const badge = document.getElementById('modalDishBadge').value.trim() || '⭐ Nuevo';
+      const desc = document.getElementById('modalDishDesc').value.trim() || 'Exclusivo corte a la brasa servido con chimichurri y acompañamiento.';
+      const img = document.getElementById('modalDishPhotoSelect').value;
+
+      if (!name) {
+        alert('Por favor escribe el nombre del plato.');
+        return;
+      }
+      if (isNaN(price) || price <= 0) {
+        alert('Por favor ingresa un precio válido.');
+        return;
+      }
+
+      if (!catalog[cat]) catalog[cat] = [];
+
+      const newId = Date.now();
+      catalog[cat].unshift({
+        id: newId,
+        name: name,
+        price: price,
+        badge: badge,
+        desc: desc,
+        img: img,
+        type: 'meat',
+        available: true
+      });
+
+      saveAllChanges(true);
+      closeNewDishModal();
+      updateStats();
+      renderDishes();
+
+      // Reset fields
+      document.getElementById('modalDishName').value = '';
+      document.getElementById('modalDishPrice').value = '';
+      document.getElementById('modalDishBadge').value = '';
+      document.getElementById('modalDishDesc').value = '';
+
+      showToast('¡Plato Creado!', `"${name}" fue agregado a la categoría ${cat} y ya está disponible en mesa.`);
+    }
+
+    // Iniciar al cargar
+    window.addEventListener('DOMContentLoaded', initCatalog);
+  </script>
+</body>
+</html>

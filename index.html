@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
+  <script src="./catalog_master.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -1116,7 +1117,13 @@
   <!-- ==================== SCRIPT DE FUNCIONAMIENTO COMPLETO ==================== -->
   <script>
     // CATÁLOGO DE PRODUCTOS DE CANDOMBE PARRILLA
-    const catalog = {
+    let storedCatalog = null;
+    try {
+      const saved = localStorage.getItem('candombe_parrilla_catalog');
+      if (saved) storedCatalog = JSON.parse(saved);
+    } catch(e){}
+
+    let catalog = storedCatalog || {
       "cortes": [
             {
                   "id": 1,
@@ -2098,18 +2105,32 @@
           continue;
         }
 
-        container.innerHTML = filtered.map(item => `
-          <div onclick="openCustomizer(${item.id})" class="food-card bg-brand-card/90 rounded-2xl p-3 border border-brand-border flex gap-3 cursor-pointer group shadow-lg">
+        container.innerHTML = filtered.map(item => {
+          const isAvailable = item.available !== false;
+          const cardBorder = isAvailable ? 'border-brand-border' : 'border-red-900/50 bg-red-950/20 opacity-75';
+          const clickAction = isAvailable ? `onclick="openCustomizer(${item.id})"` : `onclick="showAgotadoToast('${item.name}')"`;
+          const badgeHtml = isAvailable 
+            ? `<span class="absolute top-1 left-1 bg-brand-orange text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded font-mono shadow-sm">${item.badge}</span>`
+            : `<span class="absolute top-1 left-1 bg-red-600 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded font-mono shadow-sm">🔴 AGOTADO</span>`;
+
+          const actionBtn = isAvailable
+            ? `<button class="w-8 h-8 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-orange-950/50 group-hover:scale-110 transition-transform">
+                 <i class="fa-solid fa-plus"></i>
+               </button>`
+            : `<button disabled class="px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-500 font-bold text-[10px] border border-zinc-700 cursor-not-allowed">
+                 Agotado
+               </button>`;
+
+          return `
+          <div ${clickAction} class="food-card bg-brand-card/90 rounded-2xl p-3 border ${cardBorder} flex gap-3 cursor-pointer group shadow-lg transition-all">
             <div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 bg-zinc-950 relative">
-              <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-1 left-1 bg-brand-orange text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded font-mono shadow-sm">
-                ${item.badge}
-              </span>
+              <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover ${isAvailable ? 'group-hover:scale-105' : 'grayscale'} transition-transform duration-300">
+              ${badgeHtml}
             </div>
 
-            <div class="flex-1 flex flex-col justify-between py-0.5">
+            <div class="flex-1 flex flex-col justify-between py-0.5 min-w-0">
               <div>
-                <h4 class="font-display text-xl text-white tracking-wide leading-tight group-hover:text-brand-orange transition-colors">
+                <h4 class="font-display text-xl text-white tracking-wide leading-tight group-hover:text-brand-orange transition-colors truncate">
                   ${item.name}
                 </h4>
                 <p class="text-[11px] text-zinc-400 line-clamp-2 mt-0.5 leading-snug">
@@ -2119,15 +2140,14 @@
 
               <div class="flex items-center justify-between pt-1">
                 <span class="font-display text-2xl text-white font-bold tracking-tight">
-                  $${item.price.toLocaleString('es-CO')}
+                  ${item.price.toLocaleString('es-CO')}
                 </span>
-                <button class="w-8 h-8 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-orange-950/50 group-hover:scale-110 transition-transform">
-                  <i class="fa-solid fa-plus"></i>
-                </button>
+                ${actionBtn}
               </div>
             </div>
           </div>
-        `).join('');
+        `;
+        }).join('');
       }
     }
 
