@@ -2655,6 +2655,20 @@
         osc.stop(ctx.currentTime + duration);
       } catch (e) {}
     }
-  </script>
+  
+    // SINCRONIZACIÓN EN TIEMPO REAL CON EL DASHBOARD DEL RESTAURANTE
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'candombe_parrilla_catalog' && e.newValue) {
+        try {
+          catalog = JSON.parse(e.newValue);
+          renderAllSections();
+          console.log('⚡ Carta Candombe actualizada en vivo desde el Dashboard.');
+        } catch(err) {
+          console.error('Error sincronizando carta:', err);
+        }
+      }
+    });
+  
+</script>
 </body>
 </html>
